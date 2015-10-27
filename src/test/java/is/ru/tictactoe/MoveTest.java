@@ -14,6 +14,5 @@ public class MoveTest {
        	assertEquals(2, move.getY());
        	assertSame(player, move.getPlayer());
     }
-
 }
 
