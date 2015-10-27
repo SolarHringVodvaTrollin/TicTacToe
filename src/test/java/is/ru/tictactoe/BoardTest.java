@@ -20,9 +20,9 @@ public class BoardTest {
     @Test
     public void testAddMove() {
         Board board = new Board();
-        Move move = new Move(0, 0, new Player("Ragnar", "X"));
+        Move move = new Move(0, 0, new Player("Ragnar", 'X'));
 
-        // Add a new move to the board
+        // Add a new move to the board, should return true because unoccupied
         assertTrue(board.addMove(move));
 
         // Check if the move is actually on the board

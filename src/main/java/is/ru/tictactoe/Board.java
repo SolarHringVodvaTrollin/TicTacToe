@@ -15,5 +15,14 @@ public class Board {
 	public Move[][] getMoves() {
 		return board;
 	}
+
+	public Boolean addMove(Move move) {
+		int x = move.getX();
+		int y = move.getY();
+
+		board[x][y] = move;
+
+		return true;
+	}
 	
 }
