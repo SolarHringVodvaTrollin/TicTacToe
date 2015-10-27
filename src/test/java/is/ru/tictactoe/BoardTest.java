@@ -24,8 +24,14 @@ public class BoardTest {
 
         // Add a new move to the board, should return true because unoccupied
         assertTrue(board.addMove(move));
-
         // Check if the move is actually on the board
+        assertSame(move, board.getMoves()[0][0]);
+
+        Move move2 = new Move(0, 0, new Player("Benedikt", 'O'));
+
+        // Try adding a new move to an occupied space
+        assertFalse(board.addMove(move2));
+        // Verify that the original move was not overwritten
         assertSame(move, board.getMoves()[0][0]);
     }
 }
