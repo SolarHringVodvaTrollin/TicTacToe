@@ -9,14 +9,14 @@ public class Board {
 	}
 
 	public Player checkWinner() {
-
+		return null;
 	}
 
 	public Boolean insert(Move move) {
-
+		return false;
 	}
 
 	public Boolean isFull() {
-
+		return false;
 	}
 }
