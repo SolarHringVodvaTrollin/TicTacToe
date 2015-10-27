@@ -6,6 +6,8 @@ public class Player {
 	private int score;
 
 	public void Player(String name, char symbol) {
-
+		this.name = name;
+		this.symbol = symbol;
+		score = 0;
 	}
 }
