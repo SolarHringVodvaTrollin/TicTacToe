@@ -1,0 +1,11 @@
+#!/bin/bash
+
+APP="TicTacToe"
+
+bin/clean
+bin/package
+
+test -f /tmp/${APP} && rm -r /tmp/${APP}
+cp -r build/install/${APP} /tmp
+
+/tmp/${APP}/bin/${APP}
