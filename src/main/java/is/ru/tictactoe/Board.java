@@ -20,8 +20,11 @@ public class Board {
 		int x = move.getX();
 		int y = move.getY();
 
-		board[x][y] = move;
+		// Refuse overwriting a move with a new move
+		if(board[x][y] != null)
+			return false;
 
+		board[x][y] = move;
 		return true;
 	}
 	
