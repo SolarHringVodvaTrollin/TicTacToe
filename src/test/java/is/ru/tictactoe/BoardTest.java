@@ -32,7 +32,7 @@ public class BoardTest {
         board.addMove(move2);
         board.addMove(move3);
         board.addMove(move4);
-        
+
         Move[][] moves = board.getMoves();
 
         assertSame(move1, moves[0][0]);
@@ -50,14 +50,14 @@ public class BoardTest {
     @Test
     public void testAddMove() {
         Board board = new Board();
-        Move move = new Move(0, 0, new Player("Ragnar", 'X'));
+        Move move = new Move(0, 0, new Player("Turing", 'X'));
 
         // Add a new move to the board, should return true because unoccupied
         assertTrue(board.addMove(move));
         // Check if the move is actually on the board
         assertSame(move, board.getMoves()[0][0]);
 
-        Move move2 = new Move(0, 0, new Player("Benedikt", 'O'));
+        Move move2 = new Move(0, 0, new Player("Lovelace", 'O'));
 
         // Try adding a new move to an occupied space
         assertFalse(board.addMove(move2));
