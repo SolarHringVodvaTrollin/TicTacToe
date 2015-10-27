@@ -2,7 +2,7 @@ package is.ru.tictactoe;
 
 public class TicTacToe {
 
-	private UI ui;
+	private ConsoleUI ui;
 	private Board board;
 	private Player player1;
 	private Player player2;
