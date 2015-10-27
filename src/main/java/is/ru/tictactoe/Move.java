@@ -10,4 +10,16 @@ public class Move {
 		xPos = x;
 		yPos = y;
 	}
+
+	public int getX() {
+		return xPos;
+	}
+
+	public int getY() {
+		return yPos;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
 }
