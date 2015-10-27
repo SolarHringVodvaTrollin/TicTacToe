@@ -2,6 +2,7 @@ package is.ru.tictactoe;
 
 public class TicTacToe {
 
+	private UI ui;
 	private Board board;
 	private Player player1;
 	private Player player2;
@@ -21,11 +22,15 @@ public class TicTacToe {
 		return null;
 	}
 
-	public Boolean insert(Move move) {
+	public Boolean makeMove(Move move) {
 		return false;
 	}
 
 	public Boolean isFull() {
 		return false;
+	}
+
+	public static void main(String[] args) {
+
 	}
 }
