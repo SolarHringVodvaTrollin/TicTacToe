@@ -1,6 +1,6 @@
 package is.ru.tictactoe;
 
 public interface UI {
-	public void draw();
-	public void getInput();
+	public abstract void draw();
+	public abstract void getInput();
 }
