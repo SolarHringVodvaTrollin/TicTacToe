@@ -16,7 +16,13 @@ public class ConsoleUI {
 				if(j == 1){ //Tegar j er 1 ta baetum vid vid linu til ad afmarka interfacid
 					if(move[i][j] != null){
 						Player player = move[i][j].getPlayer();
-						System.out.print("| " + player.getSymbol()  + " |");
+						//Tegar buid er ad adda true false fidusnum
+						/*if(move[i][j].getSymbol()){
+							System.out.print("| X |");
+						}
+						else{
+							System.out.print("| O |");	
+						}*/
 					}
 					else{
 						System.out.print("|   |");
@@ -25,7 +31,13 @@ public class ConsoleUI {
 				else{ //Engar linur til ad afmarka interfacid
 					if(move[i][j] != null){
 						Player player = move[i][j].getPlayer();
-						System.out.print(" " + player.getSymbol()  + " ");
+						//Tegar buid er ad adda True False fidusnum
+						/*if(move[i][j].getSymbol()) {
+							System.out.print(" X ");
+						}
+						else {
+							System.out.print(" O ");
+						}*/
 					}
 					else{
 						System.out.print("   ");
