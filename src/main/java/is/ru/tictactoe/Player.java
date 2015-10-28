@@ -29,4 +29,12 @@ public class Player {
 	public int getScore() {
 		return score;
 	}
+
+	public void raiseScore() {
+		score++;
+	}
+
+	public void resetScore() {
+		score = 0;
+	}
 }

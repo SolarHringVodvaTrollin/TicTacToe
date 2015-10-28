@@ -28,5 +28,17 @@ public class PlayerTest {
     	Player player = new Player("Turing", 'K');
     }
 
+    @Test
+    public void testPlayerScore() {
+    	Player player = new Player("Edison", 'X');
+    	assertEquals(0, player.getScore());
+
+    	player.raiseScore();
+    	assertEquals(1, player.getScore());
+
+    	player.resetScore();
+    	assertEquals(0, player.getScore());
+    }
+
 }
 
