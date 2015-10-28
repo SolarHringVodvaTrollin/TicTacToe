@@ -1,6 +1,10 @@
 package is.ru.tictactoe;
 
 public class ConsoleUI {
+	public ConsoleUI() {
+		
+	}
+
 	public void draw() {
 		System.out.println("   |   |   ");
 		System.out.println("   |   |   ");
