@@ -7,10 +7,25 @@ import org.junit.Test;
 public class PlayerTest {
 	@Test
     public void testNewPlayer() {
-        Player player = new Player("Benedikt", 'X');
-        assertEquals("Benedikt", player.getName());
+        Player player = new Player("Einstein", 'X');
+        assertEquals("Einstein", player.getName());
         assertEquals('X', player.getSymbol());
         assertEquals(0, player.getScore());
+
+        player = new Player("Hawking", 'O');
+        assertEquals("Hawking", player.getName());
+        assertEquals('O', player.getSymbol());
+        assertEquals(0, player.getScore());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalName() {
+    	Player player = new Player("", 'X');
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalSymbol() {
+    	Player player = new Player("Turing", 'K');
     }
 
 }

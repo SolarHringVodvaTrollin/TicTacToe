@@ -2,6 +2,8 @@ package is.ru.tictactoe;
 
 public class Player {
 	private String name;
+	// Consider for later: Instead of having a symbol variable, consider instead
+	// using a Boolean value where true = 'X' and false = 'O'?
 	private char symbol;
 	private int score;
 
