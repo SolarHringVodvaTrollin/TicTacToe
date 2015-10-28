@@ -11,6 +11,7 @@ public class Board {
 				board[i][j] = null;
 			}
 		}
+		moveCount = 0;
 	}
 
 	public Move[][] getMoves() {
