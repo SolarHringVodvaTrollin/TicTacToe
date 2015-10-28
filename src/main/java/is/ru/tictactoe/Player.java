@@ -7,7 +7,12 @@ public class Player {
 	private char symbol;
 	private int score;
 
-	public Player(String name, char symbol) {
+	public Player(String name, char symbol) throws IllegalArgumentException {
+		if(name == "")
+			throw new IllegalArgumentException("Name cannot be empty");
+		if(!(symbol == 'X' || symbol == 'O'))
+			throw new IllegalArgumentException("Symbol must be either 'X' or 'O'");
+
 		this.name = name;
 		this.symbol = symbol;
 		score = 0;
