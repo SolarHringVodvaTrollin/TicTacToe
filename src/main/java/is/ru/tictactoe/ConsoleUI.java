@@ -17,12 +17,12 @@ public class ConsoleUI {
 					if(move[i][j] != null){
 						Player player = move[i][j].getPlayer();
 						//Tegar buid er ad adda true false fidusnum
-						/*if(move[i][j].getSymbol()){
+						if(move[i][j].getSymbol()){
 							System.out.print("| X |");
 						}
 						else{
 							System.out.print("| O |");	
-						}*/
+						}
 					}
 					else{
 						System.out.print("|   |");
@@ -32,12 +32,12 @@ public class ConsoleUI {
 					if(move[i][j] != null){
 						Player player = move[i][j].getPlayer();
 						//Tegar buid er ad adda True False fidusnum
-						/*if(move[i][j].getSymbol()) {
+						if(move[i][j].getSymbol()) {
 							System.out.print(" X ");
 						}
 						else {
 							System.out.print(" O ");
-						}*/
+						}
 					}
 					else{
 						System.out.print("   ");
