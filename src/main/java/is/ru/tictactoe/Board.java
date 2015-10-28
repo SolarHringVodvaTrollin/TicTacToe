@@ -2,6 +2,7 @@ package is.ru.tictactoe;
 
 public class Board {
 	private Move[][] board;
+	private int moveCount;
 
 	public Board() {
 		board = new Move[3][3];
@@ -25,11 +26,12 @@ public class Board {
 			return false;
 
 		board[x][y] = move;
+		moveCount++;
 		return true;
 	}
 
 	public Boolean isFull() {
-		return false;
+		return moveCount == 9;
 	}
 	
 }
