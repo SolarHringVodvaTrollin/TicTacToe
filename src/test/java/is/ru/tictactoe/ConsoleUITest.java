@@ -1,6 +1,6 @@
 package is.ru.tictactoe;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -18,13 +18,13 @@ public class ConsoleUITest {
         Move move4 = new Move(1, 0, player2);
 
         board.addMove(move1);
-        ConsoleUI.draw(board);
+        //assertEquals(" X |   |   \n   |   |   \n   |   |   ",ConsoleUI.draw(board));
         board.addMove(move2);
-        ConsoleUI.draw(board);
+        //assertEquals(" X | O |   \n   |   |   \n   |   |   ",ConsoleUI.draw(board));
         board.addMove(move3);
-        ConsoleUI.draw(board);
+        //assertEquals(" X | O | X \n   |   |   \n   |   |   ",ConsoleUI.draw(board));
         board.addMove(move4);
-        ConsoleUI.draw(board);
+        //assertEquals(" X | O | X \n O |   |   \n   |   |   ",ConsoleUI.draw(board));
     }
 }
 
