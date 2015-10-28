@@ -23,5 +23,10 @@ public class MoveTest {
     	move = new Move(-1, 0, player);
     	move = new Move(0, -1, player);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullPlayer() {
+    	Move move = new Move(0, 0, null);
+    }
 }
 
