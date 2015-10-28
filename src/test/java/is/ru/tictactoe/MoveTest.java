@@ -16,7 +16,7 @@ public class MoveTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testIllegalNewMove() {
+    public void testOutOfBoundsMove() {
     	Player player = new Player("Einstein", 'X');
     	Move move = new Move(0, 3, player);
     	move = new Move(3, 0, player);
