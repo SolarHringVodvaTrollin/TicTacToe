@@ -27,5 +27,9 @@ public class Board {
 		board[x][y] = move;
 		return true;
 	}
+
+	public Boolean isFull() {
+		return false;
+	}
 	
 }

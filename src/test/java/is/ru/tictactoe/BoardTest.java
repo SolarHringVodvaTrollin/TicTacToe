@@ -64,4 +64,22 @@ public class BoardTest {
         // Verify that the original move was not overwritten
         assertSame(move, board.getMoves()[0][0]);
     }
+
+    @Test
+    public void testIsFull() {
+        Board board = new Board();
+
+        // Board is empty
+        assertFalse(board.isFull());
+
+        // Fill the board with moves
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                board.addMove(new Move(i, j, new Player("Dalton", 'X')));
+            }
+        }
+
+        // Board is full
+        assertTrue(board.isFull());
+    }
 }
