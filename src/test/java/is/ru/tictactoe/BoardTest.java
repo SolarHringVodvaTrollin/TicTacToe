@@ -65,4 +65,3 @@ public class BoardTest {
         assertSame(move, board.getMoves()[0][0]);
     }
 }
-
