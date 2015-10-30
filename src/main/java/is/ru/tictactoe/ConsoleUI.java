@@ -62,7 +62,15 @@ public class ConsoleUI {
 
 		System.out.println("PLayer 1 enter your name:");
 
-		firstPlayerName = in.next();
+		if(in.hasNext()){
+
+			firstPlayerName = in.next();
+		}
+		else{
+
+			return "kjánaplik";
+		}
+
 
 		return firstPlayerName;
 		
@@ -75,16 +83,29 @@ public class ConsoleUI {
 
 		System.out.println("PLayer 2 enter your name:");
 
-		secondPlayerName = in.next();
+		if(in.hasNext()){
+
+			secondPlayerName = in.next();
+		}
+		else{
+
+			return "kúkalabbi";
+		}
+		
 
 		return secondPlayerName;
 
 	}
 
-	public void getInputCoordinates(){
-		System.out.println("PLayer enter your name:");
+	public int getInputNumber(){
+
+		
+
 
 	}
+		
+
+	
 
 
 }
