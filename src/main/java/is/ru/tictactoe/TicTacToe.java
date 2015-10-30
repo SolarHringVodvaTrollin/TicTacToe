@@ -41,8 +41,13 @@ public class TicTacToe {
 
 		ConsoleUI ui = new ConsoleUI();
 
-		Player player1 = new Player("Einstein", true);
-		Player player2 = new Player("Hawking", false);
+		//veit ekki alveg hvort þetta er rétt hjá mér
+		//Raggó mátt endilega kíkja á þetta
+		String player1Name = ui.getInputFirstPlayer();
+		String player2Name = ui.getInputSecondPlayer();
+
+		Player player1 = new Player(player1Name, true);
+		Player player2 = new Player(player2Name, false);
 		TicTacToe game = new TicTacToe(player1, player2);
 
 		ui.draw(game.board);

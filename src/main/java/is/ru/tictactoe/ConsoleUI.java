@@ -1,4 +1,5 @@
 package is.ru.tictactoe;
+import java.util.Scanner;
 
 public class ConsoleUI {
 	public ConsoleUI() {
@@ -52,8 +53,37 @@ public class ConsoleUI {
 		}
 	}
 
-	public void getInput() {
-		System.out.println("Enter numbers:");
+	
+	public String getInputFirstPlayer(){
+		
+		Scanner in = new Scanner(System.in);
+
+		String firstPlayerName;
+
+		System.out.println("PLayer 1 enter your name:");
+
+		firstPlayerName = in.next();
+
+		return firstPlayerName;
+		
+	}
+
+	public String getInputSecondPlayer(){
+		Scanner in = new Scanner(System.in);
+
+		String secondPlayerName;
+
+		System.out.println("PLayer 2 enter your name:");
+
+		secondPlayerName = in.next();
+
+		return secondPlayerName;
+
+	}
+
+	public void getInputCoordinates(){
+		System.out.println("PLayer enter your name:");
+
 	}
 
 
