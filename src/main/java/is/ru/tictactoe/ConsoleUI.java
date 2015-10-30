@@ -99,23 +99,34 @@ public class ConsoleUI {
 
 	public int getInputNumber(){
 
-	Scanner in = new Scanner(System.in);
+		Boolean validInput = false;
 
-	System.out.print( " please choose a box (1-9): ");
+		Scanner in = new Scanner(System.in);
 
-	int input = in.nextInt();
+		System.out.print( " please choose a box (1-9): ");
 
-	if(input <= 9 && input >=1){
+		while(!validInput){
 			
-		return input;
+			if(in.hasNextInt()){
+				int input = in.nextInt();
+			
+				if(input <= 9 && input >=1){
+					validInput = true;
+					return input;
 				
-	}
-	else {
-			System.out.println("Please enter a number between 1-9!");
-	}
-				
-	return 0;
-	}
+				}
+				else {
+					System.out.println("Please enter a number between 1-9!");
+				}
+			
+			}
 		
+			else {
+				System.out.println("Please enter a number between 1-9!");
+			}
+
+		}
+		return 0;
+	}	
 
 }
