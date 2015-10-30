@@ -106,8 +106,12 @@ public class ConsoleUI {
 	int input = in.nextInt();
 
 	if(input <= 9 && input >=1){
-		
+			
 		return input;
+				
+	}
+	else {
+			System.out.println("Please enter a number between 1-9!");
 	}
 				
 	return 0;
