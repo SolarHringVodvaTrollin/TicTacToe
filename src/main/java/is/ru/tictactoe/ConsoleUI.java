@@ -101,11 +101,10 @@ public class ConsoleUI {
 
 		Boolean validInput = false;
 
-		Scanner in = new Scanner(System.in);
-
 		System.out.print( " please choose a box (1-9): ");
 
 		while(!validInput){
+			Scanner in = new Scanner(System.in);
 			
 			if(in.hasNextInt()){
 				int input = in.nextInt();
