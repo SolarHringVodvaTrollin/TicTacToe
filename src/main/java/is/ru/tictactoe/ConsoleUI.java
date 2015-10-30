@@ -99,13 +99,19 @@ public class ConsoleUI {
 
 	public int getInputNumber(){
 
+	Scanner in = new Scanner(System.in);
+
+	System.out.print( " please choose a box (1-9): ");
+
+	int input = in.nextInt();
+
+	if(input <= 9 && input >=1){
 		
-
-
+		return input;
+	}
+				
+	return 0;
 	}
 		
-
-	
-
 
 }
