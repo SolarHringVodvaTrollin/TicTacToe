@@ -37,7 +37,8 @@ public class TicTacToe {
 
 	// Returns the player object represented by the Boolean value
 	public Player getPlayer(Boolean player) {
-		return null;
+		if(player)	return player1;
+		else		return player2;
 	}
 
 	public void changePlayerName(String name, Boolean player) {
