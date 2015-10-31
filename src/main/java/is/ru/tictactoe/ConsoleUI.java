@@ -101,7 +101,7 @@ public class ConsoleUI {
 
 		Boolean validInput = false;
 
-		System.out.print( " please choose a box (1-9): ");
+		System.out.print( " please choose a box (0-8): ");
 
 		while(!validInput){
 			Scanner in = new Scanner(System.in);
@@ -109,19 +109,19 @@ public class ConsoleUI {
 			if(in.hasNextInt()){
 				int input = in.nextInt();
 			
-				if(input <= 9 && input >=1){
+				if(input <= 8 && input >=0){
 					validInput = true;
 					return input;
 				
 				}
 				else {
-					System.out.println("Please enter a number between 1-9!");
+					System.out.println("Please enter a number between 0-8!");
 				}
 			
 			}
 		
 			else {
-				System.out.println("Please enter a number between 1-9!");
+				System.out.println("Please enter a number between 0-8!");
 			}
 
 		}
