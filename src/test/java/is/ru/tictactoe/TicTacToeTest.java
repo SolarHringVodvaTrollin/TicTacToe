@@ -37,5 +37,9 @@ public class TicTacToeTest {
 
     	assertEquals("Einstein", player1.getName());
     	assertEquals("Hawking", player2.getName());
+
+    	game.changePlayerName("", true);
+
+    	assertEquals("Einstein", player1.getName());
     }
 }
