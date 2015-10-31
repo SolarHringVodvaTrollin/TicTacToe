@@ -40,8 +40,8 @@ public class TicTacToe {
 		return null;
 	}
 
-	public void ChangePlayerName(String name, Boolean player) {
-		
+	public void changePlayerName(String name, Boolean player) {
+
 	}
 
 	/**
