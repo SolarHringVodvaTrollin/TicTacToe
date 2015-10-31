@@ -22,6 +22,6 @@ public class TicTacToeTest {
     	assertEquals("Player 2", player2.getName());
 
     	assertTrue(player1.getSymbol());
-    	assertTrue(player2.getSymbol());
+    	assertFalse(player2.getSymbol());
     }
 }
