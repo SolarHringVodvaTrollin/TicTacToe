@@ -5,11 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TicTacToeTest {
-	
-    @Test
-    public void TestGreet() {
-        assertEquals("Hello world!", TicTacToe.greet());
-    }
 
     @Test
     public void testGetPlayer() {

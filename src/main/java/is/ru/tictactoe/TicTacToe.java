@@ -15,10 +15,6 @@ public class TicTacToe {
 		board = new Board();
 	}
 
-	public static String greet() {
-		return "Hello world!";
-	}
-
 	public Player checkWinner() {
 		return null;
 	}
