@@ -84,10 +84,8 @@ public class BoardTest {
         assertFalse(board.isFull());
 
         // Fill the board with moves
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                board.addMove(new Move(i, j, new Player("Dalton", true)));
-            }
+        for(int i = 0; i < 9; i++) {
+            board.addMove(new Move(i, true));
         }
 
         // Board is full

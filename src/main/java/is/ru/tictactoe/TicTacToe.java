@@ -31,31 +31,6 @@ public class TicTacToe {
 	}
 
 	public static void main(String[] args) {
-		/* Placeholder code. Basic workflow:
-		   1. Create new UI object
-		   2. Make UI object draw welcome screen and get input for player names
-		   3. Create new players with the given names
-		   4. Pass players to TicTacToe constructor and create the game instance
-		   ....
-		*/
 
-		ConsoleUI ui = new ConsoleUI();
-
-		Player player1 = new Player("Einstein", true);
-		Player player2 = new Player("Hawking", false);
-		TicTacToe game = new TicTacToe(player1, player2);
-
-		ui.draw(game.board);
-		System.out.println();
-
-		game.makeMove(new Move(1, 1, player1));
-
-		ui.draw(game.board);
-		System.out.println();
-
-		game.makeMove(new Move(0, 0, player2));
-
-		ui.draw(game.board);
-		System.out.println();
 	}
 }

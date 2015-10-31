@@ -10,14 +10,14 @@ public class MoveTest {
   public void testNewMove() {
   	Move move = new Move(0, true);
 
-  	assertEquals(0, move.getSquare);
-  	assertTrue(move.getSymbol);
+  	assertEquals(0, move.getSquare());
+  	assertTrue(move.getSymbol());
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testOutOfBoundsMove() {
     Move move = new Move(-1, true);
-    Move move = new Move(9, false);
+    move = new Move(9, false);
   }
 }
 
