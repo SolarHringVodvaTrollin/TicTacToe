@@ -9,6 +9,10 @@ public class Board {
 		moveCount = 0;
 	}
 
+	public Boolean checkWinner() {
+		return null;
+	}
+
 	/**
 	 * Gets the current board state.
 	 * 

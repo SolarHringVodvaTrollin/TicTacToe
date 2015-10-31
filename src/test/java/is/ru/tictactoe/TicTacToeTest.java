@@ -21,6 +21,19 @@ public class TicTacToeTest {
     }
 
     @Test
+    public void testGetWinner() {
+        TicTacToe game = new TicTacToe();
+
+        assertNull(game.getWinner());
+
+        game.makeMove(0, true);
+        game.makeMove(1, true);
+        game.makeMove(2, true);
+
+        assertSame(game.getPlayer(true), game.getWinner());
+    }
+
+    @Test
     public void testChangePlayerName() {
     	TicTacToe game = new TicTacToe();
 

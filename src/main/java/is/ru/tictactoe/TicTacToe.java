@@ -15,11 +15,16 @@ public class TicTacToe {
 		board = new Board();
 	}
 
-	public Player checkWinner() {
-		return null;
+
+	public Player getWinner() {
+		Boolean winner = board.checkWinner();
+
+		if(winner == null)	return null;
+
+		return getPlayer(winner.booleanValue());
 	}
 
-	public Boolean validateMove(int move) {
+	public boolean validateMove(int move) {
 		if(move < 0 || move > 9) {
 			return false;
 		}
@@ -28,22 +33,27 @@ public class TicTacToe {
 	}
 
 	// Should not accept Player object, but Boolean instead
-	public Boolean makeMove(int move, Player player) {
-		return false;
+	public boolean makeMove(int move, boolean player) {
+		return board.addMove(new Move(move, player));
 	}
 
-	public Boolean isFull() {
-		return false;
+	public boolean isFull() {
+		return board.isFull();
 	}
 
-	// Returns the player object represented by the Boolean value
-	// ATTENTION: Allowing the user to get the Player object directly defeats the purpose of having it private. FIX
-	public Player getPlayer(Boolean player) {
+	/**
+	 * Returns the player object represented by the given Boolean value
+	 * 
+	 * @param player The Boolean value representing the Player. True is Player 1, False is Player 2
+	 * 
+	 * @return the Player object represented by player
+	 */
+	public Player getPlayer(boolean player) {
 		if(player)	return player1;
 		else		return player2;
 	}
 
-	public void changePlayerName(String name, Boolean player) {
+	public void changePlayerName(String name, boolean player) {
 		if(name == "")	return;
 
 		if(player)	player1.setName(name);
@@ -58,13 +68,15 @@ public class TicTacToe {
 	 *	game.run();
 	 */
 	public static void main(String[] args) {
-		final Boolean PLAYER1 = true;
-		final Boolean PLAYER2 = false;
+		final boolean PLAYER1 = true;
+		final boolean PLAYER2 = false;
 
 		ConsoleUI ui = new ConsoleUI();
 		TicTacToe game = new TicTacToe();
 
-	//	do {
+		boolean firstPlayer = PLAYER1;
+
+		//do {
 			// TODO: Implement function to return some value representing player's choice.
 			//ui.displayOptions()
 
@@ -75,21 +87,19 @@ public class TicTacToe {
 			}
 			*/
 
-	/*		Boolean currentPlayer = PLAYER1;
+	/*		boolean currentPlayer = firstPlayer;
 
 			while(game.checkWinner() == null && !game.isFull()) {
 				ui.draw(game.board);
 
-				int move = ui.getMove(currentPlayer);
-
-				game.makeMove(ui.getMove(currentPlayer), game.getPlayer(currentPlayer));
-
-				while(game.makeMove(ui.getMove(currentPlayer)))
+				while(!game.makeMove(ui.getMove(currentPlayer), currentPlayer)) {
+					ui.promptIllegalMove();
+				}
 
 				currentPlayer = !currentPlayer;
 			}
 
-			Player winner = game.checkWinner();
+			Player winner = game.getPlayer(game.checkWinner());
 
 			if(winner != null) {
 				winner.raiseScore();
@@ -97,6 +107,6 @@ public class TicTacToe {
 
 			// If winner is null, ui will display a tie
 			ui.display(winner);
-		} while(ui.promptContinue());*/
-	}
+		} while(ui.promptContinue());
+	*/}
 }
