@@ -6,27 +6,18 @@ import org.junit.Test;
 
 public class MoveTest {
 	
-	@Test
-    public void testNewMove() {
-    	Player player = new Player("Einstein", true);
-       	Move move = new Move(1, 2, player);
-       	assertEquals(1, move.getX());
-       	assertEquals(2, move.getY());
-       	assertSame(player, move.getPlayer());
-    }
+  @Test
+  public void testNewMove() {
+  	Move move = new Move(0, true);
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testOutOfBoundsMove() {
-    	Player player = new Player("Einstein", true);
-    	Move move = new Move(0, 3, player);
-    	move = new Move(3, 0, player);
-    	move = new Move(-1, 0, player);
-    	move = new Move(0, -1, player);
-    }
+  	assertEquals(0, move.getSquare);
+  	assertTrue(move.getSymbol);
+  }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testNullPlayer() {
-    	Move move = new Move(0, 0, null);
-    }
+  @Test(expected = IllegalArgumentException.class)
+  public void testOutOfBoundsMove() {
+    Move move = new Move(-1, true);
+    Move move = new Move(9, false);
+  }
 }
 

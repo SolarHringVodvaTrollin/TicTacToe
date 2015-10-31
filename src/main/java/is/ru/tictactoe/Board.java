@@ -14,6 +14,11 @@ public class Board {
 		moveCount = 0;
 	}
 
+	/**
+	 * Gets the current board state.
+	 * 
+	 * @return an array of Moves currently on the board
+	 */
 	public Move[][] getMoves() {
 		return board;
 	}

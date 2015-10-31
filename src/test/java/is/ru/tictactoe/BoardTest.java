@@ -9,42 +9,43 @@ public class BoardTest {
 	@Test
 	public void testNewBoard() {
 		Board board = new Board();
-		Move[][] theBoard = board.getMoves();
-        for(int i = 0; i < 3; i++) {
-        	for(int j = 0; j < 3; j++) {
-        		if(theBoard[i][j] != null) fail("A new board was created and a section wasn't null");
-        	}
+		Move[] moves = board.getMoves();
+
+        for(int i = 0; i < 9; i++) {
+            if(moves[i] != null)
+                fail("Board was not empty at creation");
         }
     }
 
     @Test
     public void testGetMoves() {
         Board board = new Board();
-        Player player1 = new Player("Ragnar", true);
-        Player player2 = new Player("Benedikt", false);
 
-        Move move1 = new Move(0, 0, player1);
-        Move move2 = new Move(0, 1, player2);
-        Move move3 = new Move(0, 2, player1);
-        Move move4 = new Move(1, 0, player2);
+        Boolean x = true;
+        Boolean o = false;
+
+        Move move1 = new Move(0, x);
+        Move move2 = new Move(2, o);
+        Move move3 = new Move(4, x);
+        Move move4 = new Move(7, o);
 
         board.addMove(move1);
         board.addMove(move2);
         board.addMove(move3);
         board.addMove(move4);
 
-        Move[][] moves = board.getMoves();
+        Move[] moves = board.getMoves();
 
-        assertSame(move1, moves[0][0]);
-        assertSame(move2, moves[0][1]);
-        assertSame(move3, moves[0][2]);
-        assertSame(move4, moves[1][0]);
+        assertSame(move1, moves[0]);
+        assertSame(move2, moves[2]);
+        assertSame(move3, moves[4]);
+        assertSame(move4, moves[7]);
 
-        assertNull(moves[1][1]);
-        assertNull(moves[1][2]);
-        assertNull(moves[2][0]);
-        assertNull(moves[2][1]);
-        assertNull(moves[2][2]);
+        assertNull(moves[1]);
+        assertNull(moves[3]);
+        assertNull(moves[5]);
+        assertNull(moves[6]);
+        assertNull(moves[8]);
     }
 
     @Test
