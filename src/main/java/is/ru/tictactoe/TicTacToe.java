@@ -27,6 +27,7 @@ public class TicTacToe {
 		return false;
 	}
 
+	// Should not accept Player object, but Boolean instead
 	public Boolean makeMove(int move, Player player) {
 		return false;
 	}
@@ -36,13 +37,17 @@ public class TicTacToe {
 	}
 
 	// Returns the player object represented by the Boolean value
+	// ATTENTION: Allowing the user to get the Player object directly defeats the purpose of having it private. FIX
 	public Player getPlayer(Boolean player) {
 		if(player)	return player1;
 		else		return player2;
 	}
 
 	public void changePlayerName(String name, Boolean player) {
+		if(name == "")	return;
 
+		if(player)	player1.setName(name);
+		else		player2.setName(name);
 	}
 
 	/**
