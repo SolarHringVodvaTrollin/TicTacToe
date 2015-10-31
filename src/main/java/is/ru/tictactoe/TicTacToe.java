@@ -2,14 +2,15 @@ package is.ru.tictactoe;
 
 public class TicTacToe {
 
-	private ConsoleUI ui;
+	// TODO: Dependency injection for the UI? Constructor accepts a UI as a parameter?
+	// UI ui;
 	private Board board;
 	private Player player1;
 	private Player player2;
 
-	public TicTacToe(Player player1, Player player2) {
-		this.player1 = player1;
-		this.player2 = player2;
+	public TicTacToe() {
+		this.player1 = new Player("Player 1", true);
+		this.player2 = new Player("Player 2", false);
 
 		board = new Board();
 	}
@@ -22,40 +23,74 @@ public class TicTacToe {
 		return null;
 	}
 
-	public Boolean makeMove(Move move) {
-		return board.addMove(move);
+	public Boolean validateMove(int move) {
+		return false;
+	}
+
+	public Boolean makeMove(int move, Player player) {
+		return false;
 	}
 
 	public Boolean isFull() {
 		return false;
 	}
 
+	// Returns the player object represented by the Boolean value
+	public Player getPlayer(Boolean player) {
+		return null;
+	}
+
+	public void ChangePlayerName(String name, Boolean player) {
+		
+	}
+
+	/**
+	 *  Consider: Put main game code into run() function.
+	 *  Then the main function can consist solely of the following:
+	 *
+	 *  TicTacToe game = new TicTacToe(new UiToUse);
+	 *	game.run();
+	 */
 	public static void main(String[] args) {
-		/* Placeholder code. Basic workflow:
-		   1. Create new UI object
-		   2. Make UI object draw welcome screen and get input for player names
-		   3. Create new players with the given names
-		   4. Pass players to TicTacToe constructor and create the game instance
-		   ....
-		*/
+		final Boolean PLAYER1 = true;
+		final Boolean PLAYER2 = false;
 
 		ConsoleUI ui = new ConsoleUI();
+		TicTacToe game = new TicTacToe();
 
-		Player player1 = new Player("Einstein", true);
-		Player player2 = new Player("Hawking", false);
-		TicTacToe game = new TicTacToe(player1, player2);
+	//	do {
+			// TODO: Implement function to return some value representing player's choice.
+			//ui.displayOptions()
 
-		ui.draw(game.board);
-		System.out.println();
+			/*
+			Pseudocode:
+			if(playerWantsNameChange) {
+				game.changePlayerName(playerThatWantsNameChange);
+			}
+			*/
 
-		game.makeMove(new Move(1, 1, player1));
+	/*		Boolean currentPlayer = PLAYER1;
 
-		ui.draw(game.board);
-		System.out.println();
+			while(game.checkWinner() == null && !game.isFull()) {
+				ui.draw(game.board);
 
-		game.makeMove(new Move(0, 0, player2));
+				int move = ui.getMove(currentPlayer);
 
-		ui.draw(game.board);
-		System.out.println();
+				game.makeMove(ui.getMove(currentPlayer), game.getPlayer(currentPlayer));
+
+				while(game.makeMove(ui.getMove(currentPlayer)))
+
+				currentPlayer = !currentPlayer;
+			}
+
+			Player winner = game.checkWinner();
+
+			if(winner != null) {
+				winner.raiseScore();
+			}
+
+			// If winner is null, ui will display a tie
+			ui.display(winner);
+		} while(ui.promptContinue());*/
 	}
 }
