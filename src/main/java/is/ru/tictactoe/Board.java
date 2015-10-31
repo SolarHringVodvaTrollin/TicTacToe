@@ -35,14 +35,12 @@ public class Board {
 		return board[square];
 	}
 
-	public Boolean addMove(Move move) {
-		int square = move.getSquare();
-
+	public Boolean addMove(int pos, boolean symbol) {
 		// Refuse overwriting a move with a new move
-		if(board[square] != null)
+		if(board[pos] != null)
 			return false;
 
-		board[square] = move;
+		board[pos] = new Move(pos, symbol);
 		moveCount++;
 		return true;
 	}

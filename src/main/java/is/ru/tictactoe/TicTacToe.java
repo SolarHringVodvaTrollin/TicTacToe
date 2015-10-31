@@ -8,6 +8,10 @@ public class TicTacToe {
 	private Player player1;
 	private Player player2;
 
+	/**
+	 * Creates a new instance of a TicTacToe game.
+	 * Players will be named "Player 1" and "Player 2" by default and the board will be empty.
+	 */
 	public TicTacToe() {
 		this.player1 = new Player("Player 1", true);
 		this.player2 = new Player("Player 2", false);
@@ -15,7 +19,11 @@ public class TicTacToe {
 		board = new Board();
 	}
 
-
+	/**
+	 * Returns the player object which is the winner of the game according to the current board state, or null if there is no winner.
+	 *
+	 * @return the player object associated with the winning player, or null if there is no winner.
+	 */
 	public Player getWinner() {
 		Boolean winner = board.checkWinner();
 
@@ -24,19 +32,39 @@ public class TicTacToe {
 		return getPlayer(winner.booleanValue());
 	}
 
-	public boolean validateMove(int move) {
-		if(move < 0 || move > 9) {
+	/**
+	 * Validates the given move, checking whether it is out of bounds.
+	 * Will NOT check whether there is already a move at the given position.
+	 * 
+	 * @param pos The position the move will occupy on the board (indexed 0-8)
+	 *
+	 * @return true if and only if the move is within bounds, false otherwise.
+	 */
+	private boolean validateMove(int pos) {
+		if(pos < 0 || pos > 8) {
 			return false;
 		}
-
 		return true;
 	}
 
-	// Should not accept Player object, but Boolean instead
-	public boolean makeMove(int move, boolean player) {
-		return board.addMove(new Move(move, player));
+	/**
+	 * Adds a move for the specified player to the specified pos
+	 * 
+	 * @param pos The position the move will occupy on the board (indexed 0-8)
+	 * @param player The boolean representation of the player that is making the move (player 1 is true)
+	 *
+	 * @return true if the move was successfully made, false otherwise.
+	 */
+	public boolean makeMove(int pos, boolean player) {
+		if(validateMove(pos))	return board.addMove(pos, player);
+		else					return false;
 	}
 
+	/**
+	 * Checks whether the game board has been filled.
+	 * 
+	 * @return true if and only if the board is full (has 9 moves), false otherwise.
+	 */
 	public boolean isFull() {
 		return board.isFull();
 	}
@@ -53,6 +81,13 @@ public class TicTacToe {
 		else		return player2;
 	}
 
+	/**
+	 * Changes a player's name.
+	 * Does nothing if name is an empty string.
+	 * 
+	 * @param name The new name
+	 * @param player The boolean representation of the player to change the name for (true is player 1)
+	 */
 	public void changePlayerName(String name, boolean player) {
 		if(name == "")	return;
 
