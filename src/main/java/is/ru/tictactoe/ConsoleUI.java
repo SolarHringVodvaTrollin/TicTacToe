@@ -12,7 +12,7 @@ public class ConsoleUI {
 	}
 
 	public static void draw(Board board) {
-		Move[][] move = board.getMoves();
+	/*	Move[][] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
 			for(int j = 0; j < move.length; j++){
@@ -49,7 +49,7 @@ public class ConsoleUI {
 				}
 			}
 			System.out.println();
-		}
+		}*/
 	}
 
 	public void getInput() {
