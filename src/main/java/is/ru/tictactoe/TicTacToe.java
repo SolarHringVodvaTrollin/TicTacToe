@@ -24,7 +24,11 @@ public class TicTacToe {
 	}
 
 	public Boolean validateMove(int move) {
-		return false;
+		if(move < 0 || move > 9) {
+			return false;
+		}
+
+		return true;
 	}
 
 	// Should not accept Player object, but Boolean instead

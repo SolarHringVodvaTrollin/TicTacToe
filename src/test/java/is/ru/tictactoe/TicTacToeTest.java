@@ -42,4 +42,17 @@ public class TicTacToeTest {
 
     	assertEquals("Einstein", player1.getName());
     }
+
+    @Test
+    public void testValidateMove() {
+    	TicTacToe game = new TicTacToe();
+
+    	for(int i = 1; i <= 9; i++) {
+    		assertTrue(game.validateMove(i));
+    	}
+
+    	assertFalse(game.validateMove(10));
+
+    	assertFalse(game.validateMove(-1));
+    }
 }
