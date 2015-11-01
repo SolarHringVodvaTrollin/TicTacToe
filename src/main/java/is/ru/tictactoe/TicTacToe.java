@@ -108,6 +108,7 @@ public class TicTacToe {
 
 		ConsoleUI ui = new ConsoleUI();
 		TicTacToe game = new TicTacToe();
+		SaveToFile saveToFile = new SaveToFile();
 
 		boolean firstPlayer = PLAYER1;
 
