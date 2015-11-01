@@ -1,4 +1,5 @@
 package is.ru.tictactoe;
+import java.util.Scanner;
 
 public class ConsoleUI {
 	public ConsoleUI() {
@@ -54,6 +55,26 @@ public class ConsoleUI {
 
 	public void getInput() {
 		System.out.println("Enter numbers:");
+	}
+
+	public boolean promptContinue() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Would you like to play another round? [y/n] ");
+
+		while(true) {
+			if(in.hasNextLine()) {
+				String input = in.nextLine();
+
+				if(input == "y" || input == "Y")
+					return true;
+				else if(input == "n" || input == "N")
+					return false;
+				else {
+					System.out.println("Illegal input: '" + input + "'. Please enter either 'y' or 'n'");
+				}
+			}
+			in.reset();
+		}
 	}
 
 
