@@ -53,8 +53,16 @@ public class ConsoleUI {
 		}*/
 	}
 
-	public void getInput() {
-		System.out.println("Enter numbers:");
+	public int getMove() {
+		System.out.println("Enter square: ");
+
+		Scanner in = new Scanner(System.in);
+
+		if(in.hasNextInt()) {
+			return in.nextInt();
+		}
+
+		return 0;
 	}
 
 	public boolean promptContinue() {
@@ -62,8 +70,8 @@ public class ConsoleUI {
 		System.out.println("Would you like to play another round? [y/n] ");
 
 		while(true) {
-			if(in.hasNextLine()) {
-				String input = in.nextLine();
+			if(in.hasNext()) {
+				String input = in.next();
 
 				if(input == "y" || input == "Y")
 					return true;
