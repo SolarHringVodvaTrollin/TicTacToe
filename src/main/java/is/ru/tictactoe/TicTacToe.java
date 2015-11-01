@@ -64,6 +64,13 @@ public class TicTacToe {
 		ConsoleUI ui = new ConsoleUI();
 		TicTacToe game = new TicTacToe();
 
+		SaveToFile saveToFile = new SaveToFile();
+		saveToFile.savePlayerToFile("Benedikt", 10);
+		saveToFile.saveGameToFile("Benedikt");
+		saveToFile.saveGameToFile("Benedikt");
+		saveToFile.saveGameToFile("Benedikt");
+		saveToFile.saveGameToFile("Ragnar");
+		saveToFile.close();
 	//	do {
 			// TODO: Implement function to return some value representing player's choice.
 			//ui.displayOptions()
