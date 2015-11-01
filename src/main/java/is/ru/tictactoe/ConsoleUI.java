@@ -78,6 +78,39 @@ public class ConsoleUI {
 	}
 
 	public void promptIllegalMove() {
-		System.out.println("Illegal move. Is the square already occupied or are you trying to make an out-of-bounds move?")
+		System.out.println("Illegal move. Is the square already occupied or are you trying to make an out-of-bounds move?");
+	}
+
+	public void display(Player winner) {
+		System.out.println(winner.getName() + "has won!");
+	}
+
+	public void displayScore(Player p1, Player p2) {
+		System.out.println("Current score:");
+		System.out.println(p1.getName() + ":\t" + p1.getScore());
+		System.out.println(p2.getName() + ":\t" + p2.getScore());
+	}
+
+	public String displayOptions() {
+		System.out.println("[N]ew round\n[S]core\n[Q]uit");
+
+		Scanner in = new Scanner(System.in);
+
+		boolean isValid;
+
+		while(true) {
+			if(in.hasNextLine()) {
+				String input = in.nextLine();
+
+				if(	input == "n" || input == "N" ||
+					input == "s" || input == "S" ||
+					input == "q" || input == "Q")
+						return input;
+				else {
+					System.out.println("Illegal input. Try again.");
+				}
+			}
+			in.reset();
+		}
 	}
 }
