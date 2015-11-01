@@ -142,6 +142,8 @@ public class TicTacToe {
 
 			// If winner is null, ui will display a tie
 			ui.display(winner);
+			// Swap the player that takes the first turn each round
+			firstPlayer = !firstPlayer;
 		} while(ui.promptContinue());
 	}
 }

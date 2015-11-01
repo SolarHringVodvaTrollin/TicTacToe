@@ -90,7 +90,12 @@ public class ConsoleUI {
 	}
 
 	public void display(Player winner) {
-		System.out.println(winner.getName() + "has won!");
+		if(winner == null) {
+			System.out.println("It's a tie!")
+		}
+		else {
+			System.out.println(winner.getName() + "has won!");
+		}
 	}
 
 	public void displayScore(Player p1, Player p2) {
