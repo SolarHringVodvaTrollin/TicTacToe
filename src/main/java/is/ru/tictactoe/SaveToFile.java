@@ -37,6 +37,7 @@ public class SaveToFile {
 			String saveToFileString = name + "," + score;
 			outputPlayerInfo.write(saveToFileString);
 			outputPlayerInfo.newLine();
+			outputPlayerInfo.flush();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -48,6 +49,7 @@ public class SaveToFile {
 			String saveToFileString = winner;
 			outputGamesInfo.write(saveToFileString);
 			outputGamesInfo.newLine();
+			outputGamesInfo.flush();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
