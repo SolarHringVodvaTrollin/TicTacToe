@@ -11,6 +11,11 @@ public class SaveToFile {
 	private BufferedWriter outputPlayerInfo;
 	private BufferedWriter outputGamesInfo;
 
+	/**
+	 *Creates a new instance of a SaveToFile class.
+	 *Instantiates the output streams to the files
+	 *and the files.
+	 */
 	public SaveToFile() {
 		try {
 			playerInfo = new File("playerInfo.txt");
@@ -32,6 +37,11 @@ public class SaveToFile {
 		}
 	}
 
+	/**
+	 *Adds a new player to the playerInfo file.
+	 *
+	 *@param name of the player and his score
+	 */
 	public void savePlayerToFile(String name, int score) {
 		try {
 			String saveToFileString = name + "," + score;
@@ -43,7 +53,11 @@ public class SaveToFile {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 *Adds the winner of a match to the gamesInfo file.
+	 *
+	 *@param name of the player, should be "no winner" if there was no winner
+	 */
 	public void saveGameToFile(String winner){
 		try {
 			String saveToFileString = winner;
@@ -56,6 +70,9 @@ public class SaveToFile {
 		}
 	}
 	
+	/**
+	 *Closes the output stream to the file
+	 */
 	public void close(){
 		try{
 			outputGamesInfo.close();
