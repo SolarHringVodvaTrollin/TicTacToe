@@ -77,5 +77,7 @@ public class ConsoleUI {
 		}
 	}
 
-
+	public void promptIllegalMove() {
+		System.out.println("Illegal move. Is the square already occupied or are you trying to make an out-of-bounds move?")
+	}
 }
