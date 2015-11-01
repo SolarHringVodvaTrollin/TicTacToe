@@ -91,4 +91,39 @@ public class BoardTest {
         // Board is full
         assertTrue(board.isFull());
     }
+
+    // Test all winning moves
+    @Test
+    public void testCheckWinner() {
+        Board board = new Board();
+        //Check top row for player 'X'
+        Move move1 = new Move(0, true);
+        Move move2 = new Move(1, true);
+        Move move3 = new Move(2, true);
+
+        board.addMove(move1);
+        board.addMove(move2);
+        board.addMove(move3);
+
+        assertTrue(board.checkWinner());
+
+        //Check second column for player 'X'
+        Move move4 = new Move(3, true);
+        Move move5 = new Move(6, true);
+
+        board.addMove(move4);
+        board.addMove(move5);
+
+        assertTrue(board.checkWinner());
+
+        //Check diagonal for player 'X'
+        Move move6 = new Move(4, true);
+        Move move7 = new Move(8, true);
+
+        board.addMove(move6);
+        board.addMove(move7);
+
+        assertTrue(board.checkWinner());   
+       
+    }
 }

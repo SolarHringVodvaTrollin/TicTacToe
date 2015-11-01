@@ -46,5 +46,42 @@ public class Board {
 	public Boolean isFull() {
 		return moveCount == 9;
 	}
-	
-}
+
+	public Boolean checkWinner() {
+
+		//Checking if player = 'X' has won
+		//Check all rows
+		if((board[0].getSymbol() == true) && (board[1].getSymbol() == true) && (board[2].getSymbol() == true)) {
+			return true;
+		};
+		if(board[3].getSymbol() == true && board[4].getSymbol() == true && board[5].getSymbol() == true) {
+			return true;
+		}
+		if(board[6].getSymbol() == true && board[7].getSymbol() == true && board[8].getSymbol() == true) {
+			return true;
+		}
+		//Check all columns
+		if(board[0].getSymbol() == true && board[3].getSymbol() == true && board[6].getSymbol() == true) {
+			return true;
+		}
+		if(board[1].getSymbol() == true && board[4].getSymbol() == true && board[7].getSymbol() == true) {
+			return true;
+		}
+		if(board[2].getSymbol() == true && board[5].getSymbol() == true && board[8].getSymbol() == true) {
+			return true;
+		}
+		// Check diagonal
+		if(board[0].getSymbol() == true && board[4].getSymbol() == true && board[8].getSymbol() == true) {
+			return true;
+		}
+		if(board[2].getSymbol() == true && board[4].getSymbol() == true && board[6].getSymbol() == true) {
+			return true;
+		}
+		
+		return null;	
+	}
+}   
+
+
+
+
