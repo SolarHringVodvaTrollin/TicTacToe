@@ -125,19 +125,8 @@ public class TicTacToe {
 
 			boolean currentPlayer = firstPlayer;
 
-<<<<<<< HEAD
-		//veit ekki alveg hvort þetta er rétt hjá mér
-		//Raggó mátt endilega kíkja á þetta
-		String player1Name = ui.getInputFirstPlayer();
-		String player2Name = ui.getInputSecondPlayer();
-
-		Player player1 = new Player(player1Name, true);
-		Player player2 = new Player(player2Name, false);
-		TicTacToe game = new TicTacToe(player1, player2);
-=======
 			while(game.getWinner() == null && !game.isFull()) {
 				ui.draw(game.board);
->>>>>>> f3d827b4519a4928d914ea5b38140a9cbccc6f56
 
 				while(!game.makeMove(ui.getMove(), currentPlayer)) {
 					ui.promptIllegalMove();
