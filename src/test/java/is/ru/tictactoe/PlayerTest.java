@@ -19,8 +19,17 @@ public class PlayerTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testIllegalName() {
+    public void testIllegalNameInConstructor() {
     	Player player = new Player("", true);
+    }
+
+    @Test
+    public void testSetName() {
+        Player player = new Player("Einstein", true);
+
+        player.setName("Hawking");
+
+        assertEquals("Hawking", player.getName());
     }
 
     @Test

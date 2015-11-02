@@ -1,29 +1,21 @@
 package is.ru.tictactoe;
 
 public class Move {
-	private int xPos;
-	private int yPos;
-	private Player player;
+	private int square;
+	private boolean symbol;
 
-	public Move(int x, int y, Player player) throws IllegalArgumentException {
-		if((x < 0) || (x > 2) || (y < 0) || (y > 2))
-			throw new IllegalArgumentException("Move out of bounds");
-		if(player == null)
-			throw new IllegalArgumentException("Player cannot be null");
-		this.player = player;
-		xPos = x;
-		yPos = y;
+	public Move(int square, boolean symbol) throws IllegalArgumentException {
+		if((square < 0) || (square > 8))
+			throw new IllegalArgumentException("Move is out of bounds");
+		this.symbol = symbol;
+		this.square = square;
 	}
 
-	public int getX() {
-		return xPos;
+	public int getSquare() {
+		return square;
 	}
 
-	public int getY() {
-		return yPos;
-	}
-
-	public Player getPlayer() {
-		return player;
+	public boolean getSymbol() {
+		return symbol;
 	}
 }

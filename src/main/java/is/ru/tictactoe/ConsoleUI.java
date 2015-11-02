@@ -13,7 +13,7 @@ public class ConsoleUI {
 	}
 
 	public static void draw(Board board) {
-		Move[][] move = board.getMoves();
+	/*	Move[][] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
 			for(int j = 0; j < move.length; j++){
@@ -50,57 +50,51 @@ public class ConsoleUI {
 				}
 			}
 			System.out.println();
-		}
+		}*/
 	}
 
-	
-	public String getInputFirstPlayer(){
-		
+	public int getMove() {
+		System.out.println("Enter square: ");
 		Scanner in = new Scanner(System.in);
 
+		if(in.hasNextInt()) {
+			return in.nextInt();
+		}
+		return 0;
+	}
+	
+	public String getInputFirstPlayer(){
+		Scanner in = new Scanner(System.in);
 		String firstPlayerName;
-
-		System.out.println("PLayer 1 enter your name:");
+		System.out.println("Enter name for Player 1:");
 
 		if(in.hasNext()){
 
 			firstPlayerName = in.next();
 		}
 		else{
-
 			return "kjánaplik";
 		}
-
-
-		return firstPlayerName;
-		
+		return firstPlayerName;		
 	}
 
 	public String getInputSecondPlayer(){
 		Scanner in = new Scanner(System.in);
-
 		String secondPlayerName;
-
-		System.out.println("PLayer 2 enter your name:");
+		System.out.println("Enter name for Player 2:");
 
 		if(in.hasNext()){
-
 			secondPlayerName = in.next();
 		}
 		else{
 
 			return "kúkalabbi";
 		}
-		
-
 		return secondPlayerName;
-
 	}
 
 	public int getInputNumber(){
-
 		Boolean validInput = false;
-
 		System.out.print( " please choose a box (0-8): ");
 
 		while(!validInput){
@@ -117,15 +111,74 @@ public class ConsoleUI {
 				else {
 					System.out.println("Please enter a number between 0-8!");
 				}
-			
 			}
 		
 			else {
 				System.out.println("Please enter a number between 0-8!");
 			}
-
 		}
 		return 0;
 	}	
 
+	public boolean promptContinue() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Would you like to play another round? [y/n] ");
+
+		while(true) {
+			if(in.hasNext()) {
+				String input = in.next();
+
+				if(input == "y" || input == "Y")
+					return true;
+				else if(input == "n" || input == "N")
+					return false;
+				else {
+					System.out.println("Illegal input: '" + input + "'. Please enter either 'y' or 'n'");
+				}
+			}
+			in.reset();
+		}
+	}
+
+	public void promptIllegalMove() {
+		System.out.println("Illegal move. Is the square already occupied or are you trying to make an out-of-bounds move?");
+	}
+
+	public void display(Player winner) {
+		if(winner == null) {
+			System.out.println("It's a tie!");
+		}
+		else {
+			System.out.println(winner.getName() + "has won!");
+		}
+	}
+
+	public void displayScore(Player p1, Player p2) {
+		System.out.println("Current score:");
+		System.out.println(p1.getName() + ":\t" + p1.getScore());
+		System.out.println(p2.getName() + ":\t" + p2.getScore());
+	}
+
+	public String displayOptions() {
+		System.out.println("[N]ew round\n[S]core\n[Q]uit");
+
+		Scanner in = new Scanner(System.in);
+
+		boolean isValid;
+
+		while(true) {
+			if(in.hasNextLine()) {
+				String input = in.nextLine();
+
+				if(	input == "n" || input == "N" ||
+					input == "s" || input == "S" ||
+					input == "q" || input == "Q")
+						return input;
+				else {
+					System.out.println("Illegal input. Try again.");
+				}
+			}
+			in.reset();
+		}
+	}
 }
