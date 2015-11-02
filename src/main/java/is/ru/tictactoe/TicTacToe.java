@@ -119,7 +119,6 @@ public class TicTacToe {
 		ConsoleUI ui = new ConsoleUI();
 		
 		SaveToFile saveToFile = new SaveToFile();
-
 		boolean firstPlayer = PLAYER1;
 
 		Boolean humanOrComputer = ui.players();
@@ -141,14 +140,31 @@ public class TicTacToe {
 
 			ui.draw();
 
-			while(game.getWinner() == null && !game.isFull()) {
-				ui.draw(game.board);
+			if(humanOrComputer) {//human vs human
+				while(game.getWinner() == null && !game.isFull()) {
+					ui.draw(game.board);
 
-				while(!game.makeMove(ui.getMove(), currentPlayer)) {
-					ui.promptIllegalMove();
+					while(!game.makeMove(ui.getMove(), currentPlayer)) {
+						ui.promptIllegalMove();
+					}
+
+					currentPlayer = !currentPlayer;
 				}
+			}
+			else {//Human vs computer
+				while(game.getWinner() == null && !game.isFull()) {
+					ui.draw(game.board);
 
-				currentPlayer = !currentPlayer;
+					if(currentPlayer) {
+						while(!game.makeMove(ui.getMove(), currentPlayer)) {
+							ui.promptIllegalMove();
+						}
+					}
+					else {
+						int k = player2.generateMove(board);
+						game.makeMove(k, false);
+					}
+				}
 			}
 
 			Player winner = game.getWinner();

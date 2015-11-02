@@ -180,8 +180,20 @@ public class ConsoleUI {
 
 	public Boolean players() {
 		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
+		
+		Scanner in = new Scanner(System.in);
+		
 		String input = in.nextLine();
-
-		if(input.)
+		while(true) {
+			if(input.equals("H") || input.equals("h")) {
+				return true;
+			}
+			else if(input.equals("C") || input.equals("c")) {
+				return false;
+			}
+			else {
+				System.out.println("Invalid input, please insert eather H for human player or C for computer player.");
+			}
+		}
 	}
 }

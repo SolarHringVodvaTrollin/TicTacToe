@@ -8,11 +8,12 @@ import java.util.Random;
 		 super(name, symbol);
 	}
 	
-	public void generateMove(Board board) {
+	@Override
+	public int generateMove(Board board) {
 		Random rmove = new Random();
 		int randomMove = rmove.nextInt(8);
 		if(board.isFull()) {
-			return;
+			return -1;
 		}
 
 		if(board.getMoveAt(randomMove) == null){
@@ -25,9 +26,10 @@ import java.util.Random;
 				}
 				if(board.getMoveAt(i) == null){
 					board.addMove(i, false);
-					return;
+					return i;
 				}
 			}
 		}
+		return -1;
 	}
 }
