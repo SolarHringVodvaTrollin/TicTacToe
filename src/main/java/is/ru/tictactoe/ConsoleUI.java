@@ -7,13 +7,13 @@ public class ConsoleUI {
 	}
 
 	public void draw() {
-		System.out.println("   |   |   ");
-		System.out.println("   |   |   ");
-		System.out.println("   |   |   ");
+		System.out.println(" 0 | 1 | 2 ");
+		System.out.println(" 3 | 4 | 5 ");
+		System.out.println(" 6 | 7 | 8 ");
 	}
 
 	public static void draw(Board board) {
-	/*	Move[][] move = board.getMoves();
+		/*Move[][] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
 			for(int j = 0; j < move.length; j++){
