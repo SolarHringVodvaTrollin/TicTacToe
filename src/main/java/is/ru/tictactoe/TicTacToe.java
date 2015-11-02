@@ -12,9 +12,15 @@ public class TicTacToe {
 	 * Creates a new instance of a TicTacToe game.
 	 * Players will be named "Player 1" and "Player 2" by default and the board will be empty.
 	 */
-	public TicTacToe() {
-		this.player1 = new Player("Player 1", true);
-		this.player2 = new Player("Player 2", false);
+	public TicTacToe(boolean humanVsHuman) {
+		if(humanVsHuman){
+			this.player1 = new Player("Player 1", true);
+			this.player2 = new Player("Player 2", false);
+		}
+		else {
+			this.player1 = new Player("Player 1", true);
+			this.player2 = new AI("Player 2", false);
+		}
 
 		board = new Board();
 	}
@@ -111,6 +117,9 @@ public class TicTacToe {
 		SaveToFile saveToFile = new SaveToFile();
 
 		boolean firstPlayer = PLAYER1;
+
+		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
+
 
 		do {
 			// TODO: Implement function to return some value representing player's choice.
