@@ -10,11 +10,13 @@ public class SaveToFile {
 	private File gamesInfo;
 	private BufferedWriter outputPlayerInfo;
 	private BufferedWriter outputGamesInfo;
+	private BufferedReader inputPlayerInfo;
+	private BufferedReader inputGamesInfo;
 
 	/**
 	 *Creates a new instance of a SaveToFile class.
 	 *Instantiates the output streams to the files
-	 *and the files.
+	 *and from the files.
 	 */
 	public SaveToFile() {
 		try {
@@ -29,8 +31,12 @@ public class SaveToFile {
 			
 			FileWriter fwGame = new FileWriter(gamesInfo.getAbsoluteFile(), true);
 			FileWriter fwPlayer = new FileWriter(playerInfo.getAbsoluteFile(), true);
+			FileReader frGame = new FileReader(gamesInfo.getAbsoluteFile());
+			FileReader frPlayer = new FileReader(playerInfo.getAbsoluteFile());
 			outputGamesInfo = new BufferedWriter(fwGame);
 			outputPlayerInfo = new BufferedWriter(fwPlayer);
+			inputGamesInfo = new BufferedReader(frGame);
+			inputPlayerInfo = new BufferedReader(frPlayer);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -69,6 +75,38 @@ public class SaveToFile {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 *Increments the score of the input player by 1/
+	 *
+	 *@param name of the player you want to increment the score of.
+	 */
+	public void updatePlayerScore(String name) {
+		File tempFile = new File("file.txt");
+		tempFile.createNewFile();
+		FileWriter fwTemp = new FileWriter(tempFile.getAbsoluteFile());
+		BufferedWriter outputTemp = new BufferedWriter(fwTemp);
+
+		String line = null;
+
+		while((line = inputPlayerInfo.readLine()) != null) {
+
+			if(line.contains(name))
+			{
+				String[] splitString = line.split(",");
+				int incrementNumber = Integer.parseInt(splitString[1]);
+				incrementNumber++;
+				line = name + "," + incrementNumber;
+			}
+			outputTemp.write(line);
+			outputTemp.flush();
+		}
+		output.close();
+
+		playerInfo.delete();
+		tempFile.renameTo(playerInfo);
+		playerInfo = tempFile;
 	}
 	
 	/**
