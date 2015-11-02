@@ -101,6 +101,10 @@ public class TicTacToe {
 		else		player2.setName(name);
 	}
 
+	public void resetBoard() {
+		board.reset();
+	}
+
 	/**
 	 *  Consider: Put main game code into run() function.
 	 *  Then the main function can consist solely of the following:
@@ -131,7 +135,8 @@ public class TicTacToe {
 				game.changePlayerName(playerThatWantsNameChange);
 			}
 			*/
-
+			game.resetBoard();
+			
 			boolean currentPlayer = firstPlayer;
 
 			ui.draw();
