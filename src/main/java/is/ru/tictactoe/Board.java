@@ -11,6 +11,16 @@ public class Board {
 	}
 
 	/**
+	 * Clears all moves from the board, resetting it.
+	 */
+	public void reset() {
+		for(int i = 0; i < 9; i++) {
+			board[i] = null;
+		}
+		moveCount = 0;
+	}
+
+	/**
 	 * Gets the current board state.
 	 * 
 	 * @return an array of Moves currently on the board
