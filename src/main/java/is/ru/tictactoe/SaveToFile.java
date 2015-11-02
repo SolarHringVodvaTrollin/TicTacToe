@@ -82,7 +82,7 @@ public class SaveToFile {
 	 *
 	 *@param name of the player you want to increment the score of.
 	 */
-	public void updatePlayerScore(String name) {
+	/*public void updatePlayerScore(String name) {
 		File tempFile = new File("file.txt");
 		tempFile.createNewFile();
 		FileWriter fwTemp = new FileWriter(tempFile.getAbsoluteFile());
@@ -104,10 +104,12 @@ public class SaveToFile {
 		}
 		output.close();
 
-		playerInfo.delete();
+		if(!playerInfo.delete()){
+			System.out.println("coudlnt delete file");
+		}
 		tempFile.renameTo(playerInfo);
 		playerInfo = tempFile;
-	}
+	}*/
 	
 	/**
 	 *Closes the output stream to the file
