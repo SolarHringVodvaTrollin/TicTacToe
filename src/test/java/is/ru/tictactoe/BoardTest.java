@@ -143,7 +143,7 @@ public class BoardTest {
         //================================
         //Now testing for player 'O'
     
-        /*Board board2 = new Board();
+        Board board2 = new Board();
         //Middle row
         Move move8 = new Move(3, false);
         Move move9 = new Move(4, false);  
@@ -178,7 +178,7 @@ public class BoardTest {
 
         board2.addMove(move17);
 
-        assertNull(checkWinner());*/
+        assertNull(board2.checkWinner());
 
     }
 }

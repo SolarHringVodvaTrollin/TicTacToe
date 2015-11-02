@@ -52,65 +52,76 @@ public class Board {
 	*If neither player is a winner then it will return NULL. 
 	*Checks all rows, columns and diagonal lines for the same symbol across.
 	*
+	*/
 	public Boolean checkWinner() {
 
 		//Checking if player = 'X' has won
 		//Check all rows
-		if((board[0].getSymbol() == true) && (board[1].getSymbol() == true) && (board[2].getSymbol() == true)) {
-			return true;
-		};
-		if(board[3].getSymbol() == true && board[4].getSymbol() == true && board[5].getSymbol() == true) {
-			return true;
+		/*
+		[0][1][2]
+		[3][4][5]
+		[6][7][8]
+		*/
+
+		Boolean result = null;
+
+		// Check top row
+		if(		board[0] != null && 	board[1] != null && 	board[2] != null) {
+			if(	board[0].getSymbol() == board[1].getSymbol() == board[2].getSymbol()) {
+				return board[0].getSymbol();
+			}
 		}
-		if(board[6].getSymbol() == true && board[7].getSymbol() == true && board[8].getSymbol() == true) {
-			return true;
+		// Check middle row
+		if(		board[3] != null && 	board[4] != null && 	board[5] != null) {
+			if(	board[3].getSymbol() == board[4].getSymbol() == board[5].getSymbol()) {
+				return board[3].getSymbol();
+			}
 		}
-		//Check all columns
-		if(board[0].getSymbol() == true && board[3].getSymbol() == true && board[6].getSymbol() == true) {
-			return true;
+
+		// Check bottom row
+		if(		board[6] != null && 	board[7] != null && 	board[8] != null) {
+			if(	board[6].getSymbol() == board[7].getSymbol() == board[8].getSymbol()) {
+				return board[6].getSymbol();
+			}
 		}
-		if(board[1].getSymbol() == true && board[4].getSymbol() == true && board[7].getSymbol() == true) {
-			return true;
+
+		// Check leftmost column
+		if(		board[0] != null && 	board[3] != null && 	board[6] != null) {
+			if(	board[0].getSymbol() == board[3].getSymbol() == board[6].getSymbol()) {
+				return board[0].getSymbol();
+			}
 		}
-		if(board[2].getSymbol() == true && board[5].getSymbol() == true && board[8].getSymbol() == true) {
-			return true;
+
+		// Check middle column
+		if(		board[1] != null && 	board[4] != null && 	board[7] != null) {
+			if(	board[1].getSymbol() == board[4].getSymbol() == board[7].getSymbol()) {
+				return board[1].getSymbol();
+			}
 		}
-		// Check diagonal
-		if(board[0].getSymbol() == true && board[4].getSymbol() == true && board[8].getSymbol() == true) {
-			return true;
+
+		// Check rightmost column
+		if(		board[2] != null && 	board[5] != null && 	board[8] != null) {
+			if(	board[2].getSymbol() == board[5].getSymbol() == board[8].getSymbol()) {
+				return board[2].getSymbol();
+			}
 		}
-		if(board[2].getSymbol() == true && board[4].getSymbol() == true && board[6].getSymbol() == true) {
-			return true;
+
+		// Check left->right diagonal
+		if(		board[0] != null && 	board[4] != null && 	board[8] != null) {
+			if(	board[0].getSymbol() == board[4].getSymbol() == board[8].getSymbol()) {
+				return board[0].getSymbol();
+			}
 		}
-		//Checking if player = 'O' has won
-		//Check all rows
-		if((board[0].getSymbol() == false) && (board[1].getSymbol() == false) && (board[2].getSymbol() == false)) {
-			return false;
-		};
-		if(board[3].getSymbol() == false && board[4].getSymbol() == false && board[5].getSymbol() == false) {
-			return false;
-		}
-		if(board[6].getSymbol() == false && board[7].getSymbol() == false && board[8].getSymbol() == false) {
-			return false;
-		}
-		//Check all columns
-		if(board[0].getSymbol() == false && board[3].getSymbol() == false && board[6].getSymbol() == false) {
-			return false;
-		}
-		if(board[1].getSymbol() == false && board[4].getSymbol() == false && board[7].getSymbol() == false) {
-			return false;
-		}
-		if(board[2].getSymbol() == false && board[5].getSymbol() == false && board[8].getSymbol() == false) {
-			return false;
-		}
-		// Check diagonal
-		if(board[0].getSymbol() == false && board[4].getSymbol() == false && board[8].getSymbol() == false) {
-			return false;
-		}
-		if(board[2].getSymbol() == false && board[4].getSymbol() == false && board[6].getSymbol() == false) {
-			return false;
-		}
-		return null;	
+
+		// Check right->left diagonal
+		if(		board[2] != null && 	board[4] != null && 	board[6] != null) {
+			if(	board[2].getSymbol() == board[4].getSymbol() == board[6].getSymbol()) {
+				return board[2].getSymbol();
+			}
+		}	
+
+		// If we got here, there is no winner and we return null
+		return null;
 	}
 }   
 
