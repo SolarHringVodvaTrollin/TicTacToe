@@ -125,6 +125,8 @@ public class TicTacToe {
 
 			boolean currentPlayer = firstPlayer;
 
+			ui.draw();
+
 			while(game.getWinner() == null && !game.isFull()) {
 				ui.draw(game.board);
 
