@@ -15,4 +15,11 @@ Authors:
 - RagnarHal
 
 ----------
- 
+![](http://tshirtgroove.com/wp-content/uploads/2010/05/think-outside-the-box-tic-tac-toe-tshirt1.jpg)
+
+
+[Developer's Manual](https://github.com/SolarHringVodvaTrollin/TicTacToe/blob/documentation/developersManual.md)
+
+[User Manual & Installation Guide](https://github.com/SolarHringVodvaTrollin/TicTacToe/blob/documentation/userManual.md) 
+
+
