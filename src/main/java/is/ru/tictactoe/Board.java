@@ -47,6 +47,11 @@ public class Board {
 		return moveCount == 9;
 	}
 
+	/**
+	*Returns the winner's symbol which is true for 'X' and false for 'O'.
+	*If neither player is a winner then it will return NULL. 
+	*Checks all rows, columns and diagonal lines for the same symbol across.
+	*
 	public Boolean checkWinner() {
 
 		//Checking if player = 'X' has won
@@ -77,7 +82,34 @@ public class Board {
 		if(board[2].getSymbol() == true && board[4].getSymbol() == true && board[6].getSymbol() == true) {
 			return true;
 		}
-		
+		//Checking if player = 'O' has won
+		//Check all rows
+		if((board[0].getSymbol() == false) && (board[1].getSymbol() == false) && (board[2].getSymbol() == false)) {
+			return false;
+		};
+		if(board[3].getSymbol() == false && board[4].getSymbol() == false && board[5].getSymbol() == false) {
+			return false;
+		}
+		if(board[6].getSymbol() == false && board[7].getSymbol() == false && board[8].getSymbol() == false) {
+			return false;
+		}
+		//Check all columns
+		if(board[0].getSymbol() == false && board[3].getSymbol() == false && board[6].getSymbol() == false) {
+			return false;
+		}
+		if(board[1].getSymbol() == false && board[4].getSymbol() == false && board[7].getSymbol() == false) {
+			return false;
+		}
+		if(board[2].getSymbol() == false && board[5].getSymbol() == false && board[8].getSymbol() == false) {
+			return false;
+		}
+		// Check diagonal
+		if(board[0].getSymbol() == false && board[4].getSymbol() == false && board[8].getSymbol() == false) {
+			return false;
+		}
+		if(board[2].getSymbol() == false && board[4].getSymbol() == false && board[6].getSymbol() == false) {
+			return false;
+		}
 		return null;	
 	}
 }   

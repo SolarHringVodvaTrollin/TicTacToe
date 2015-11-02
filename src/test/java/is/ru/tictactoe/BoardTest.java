@@ -92,11 +92,12 @@ public class BoardTest {
         assertTrue(board.isFull());
     }
 
-    // Test all winning moves
+    // Test all winning moves for both players
     @Test
     public void testCheckWinner() {
+        //Testing for player 'X'
         Board board = new Board();
-        //Check top row for player 'X'
+        //Top row
         Move move1 = new Move(0, true);
         Move move2 = new Move(1, true);
         Move move3 = new Move(2, true);
@@ -107,7 +108,7 @@ public class BoardTest {
 
         assertTrue(board.checkWinner());
 
-        //Check second column for player 'X'
+        //Second column
         Move move4 = new Move(3, true);
         Move move5 = new Move(6, true);
 
@@ -116,14 +117,68 @@ public class BoardTest {
 
         assertTrue(board.checkWinner());
 
-        //Check diagonal for player 'X'
+        //Diagonal from upper left
         Move move6 = new Move(4, true);
         Move move7 = new Move(8, true);
 
         board.addMove(move6);
         board.addMove(move7);
 
-        assertTrue(board.checkWinner());   
-       
+        assertTrue(board.checkWinner());
+
+        //Third column
+        Move move15 = new Move(5, true);
+
+        board.addMove(move15);
+
+        assertTrue(board.checkWinner());
+
+        //Bottom row
+        Move move16 = new Move(7, true);
+
+        board.addMove(move16);
+
+        assertTrue(board.checkWinner());
+
+        //================================
+        //Now testing for player 'O'
+    
+        /*Board board2 = new Board();
+        //Middle row
+        Move move8 = new Move(3, false);
+        Move move9 = new Move(4, false);  
+        Move move10 = new Move(5, false);
+
+        board2.addMove(move8);
+        board2.addMove(move9);
+        board2.addMove(move10);
+
+        assertFalse(board2.checkWinner());
+
+        //Second column
+        Move move11 = new Move(1, false);
+        Move move12 = new Move(7, false);
+
+        board2.addMove(move11);
+        board2.addMove(move12);
+
+        assertFalse(board2.checkWinner());
+
+        //Diagonal from upper right
+        Move move13 = new Move(2, false);
+        Move move14 = new Move(6, false);
+
+        board2.addMove(move13);
+        board2.addMove(move14);
+
+        assertFalse(board2.checkWinner());
+
+        //Check if neither has won
+        Move move17 = new Move(6, true);
+
+        board2.addMove(move17);
+
+        assertNull(checkWinner());*/
+
     }
 }
