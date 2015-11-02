@@ -112,7 +112,7 @@ public class TicTacToe {
 
 		boolean firstPlayer = PLAYER1;
 
-		//do {
+		do {
 			// TODO: Implement function to return some value representing player's choice.
 			//ui.displayOptions()
 
@@ -123,19 +123,19 @@ public class TicTacToe {
 			}
 			*/
 
-	/*		boolean currentPlayer = firstPlayer;
+			boolean currentPlayer = firstPlayer;
 
-			while(game.checkWinner() == null && !game.isFull()) {
+			while(game.getWinner() == null && !game.isFull()) {
 				ui.draw(game.board);
 
-				while(!game.makeMove(ui.getMove(currentPlayer), currentPlayer)) {
+				while(!game.makeMove(ui.getMove(), currentPlayer)) {
 					ui.promptIllegalMove();
 				}
 
 				currentPlayer = !currentPlayer;
 			}
 
-			Player winner = game.getPlayer(game.checkWinner());
+			Player winner = game.getWinner();
 
 			if(winner != null) {
 				winner.raiseScore();
@@ -143,6 +143,8 @@ public class TicTacToe {
 
 			// If winner is null, ui will display a tie
 			ui.display(winner);
+			// Swap the player that takes the first turn each round
+			firstPlayer = !firstPlayer;
 		} while(ui.promptContinue());
-	*/}
+	}
 }
