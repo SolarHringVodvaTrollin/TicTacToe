@@ -1,5 +1,6 @@
 package is.ru.tictactoe;
 
+import java.lang.NullPointerException;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -81,5 +82,94 @@ public class BoardTest {
 
         // Board is full
         assertTrue(board.isFull());
+    }
+
+    // Test all winning moves for both players
+    @Test
+    public void testCheckWinner() {
+        //Testing for player 'X'
+        Board board = new Board();
+
+        // Empty board, no winner
+        assertNull(board.checkWinner());
+
+        //Third column
+        board.addMove(2, true);
+        board.addMove(5, true);
+        board.addMove(8, true);
+
+        assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // Bottom row
+        board.addMove(6, false);
+        board.addMove(7, false);
+        board.addMove(8, false);
+
+        assertFalse(board.checkWinner());
+
+        board = new Board();
+
+        // Middle column
+        board.addMove(1, false);
+        board.addMove(4, false);
+        board.addMove(7, false);
+
+        assertFalse(board.checkWinner());
+
+        board = new Board();
+
+        //Diagonal from upper right
+        board.addMove(2, true);
+        board.addMove(4, true);
+        board.addMove(6, true);
+
+        assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // Top row
+        board.addMove(0, true);
+        board.addMove(1, true);
+        board.addMove(2, true);
+
+        assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // First column
+        board.addMove(0, true);
+        board.addMove(3, true);
+        board.addMove(6, true);
+
+        assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // Middle row
+        board.addMove(3, false);
+        board.addMove(4, false);
+        board.addMove(5, false);
+
+        assertFalse(board.checkWinner());
+
+        board = new Board();
+
+        // Left->right diagonal
+        board.addMove(0, true);
+        board.addMove(4, true);
+        board.addMove(8, true);
+
+        assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // Top row with different values, no winner
+        board.addMove(0, false);
+        board.addMove(1, true);
+        board.addMove(2, false);
+
+        assertNull(board.checkWinner());
     }
 }

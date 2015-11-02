@@ -15,7 +15,7 @@ public class Move {
 		return square;
 	}
 
-	public Boolean getSymbol() {
+	public boolean getSymbol() {
 		return symbol;
 	}
 }
