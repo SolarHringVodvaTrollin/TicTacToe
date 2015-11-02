@@ -1,6 +1,15 @@
 package is.ru.tictactoe;
 import java.lang.NullPointerException;
 
+/**
+*
+* This class implements the board for the game Tic Tac Toe
+* It keeps track of all moves 
+* @param board is an array of a type Move
+* @author SolarHringVodvaTrollin
+* @since 2.11.2015
+*/
+
 public class Board {
 	private Move[] board;
 	private int moveCount;
@@ -32,6 +41,12 @@ public class Board {
 		return board[square];
 	}
 
+	/**
+	* Adds a new move at a given position, with symbol either 'x' or 'o'
+	* @param moveCount counter that keeps track of moves during the game
+	* @return returns true if the new move was accepted/performed 
+	*/
+
 	public Boolean addMove(int pos, boolean symbol) {
 		// Refuse overwriting a move with a new move
 		if(board[pos] != null)
@@ -42,11 +57,17 @@ public class Board {
 		return true;
 	}
 
+	/**
+	* Checks if the board is filled
+	* @return returns if the more than 8 moves were performed
+	*/
+
 	public Boolean isFull() {
 		return moveCount == 9;
 	}
 
-	/**
+	
+	 /**
 	 * Verifies that three moves exist (are not null).
 	 *
 	 * @param m1 The first move
