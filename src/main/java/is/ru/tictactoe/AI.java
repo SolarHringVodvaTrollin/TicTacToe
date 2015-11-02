@@ -16,7 +16,7 @@ import java.util.Random;
 		}
 
 		if(board.getMoveAt(randomMove) == null){
-			board.addMove(i, false);
+			board.addMove(randomMove, false);
 		}
 		else {
 			for(int i = randomMove + 1; i < 9; i++){
