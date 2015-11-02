@@ -50,8 +50,8 @@ public class Board {
 	 * Verifies that three moves exist (are not null).
 	 *
 	 * @param m1 The first move
-	 * @param m1 The second move
-	 * @param m1 The third move
+	 * @param m2 The second move
+	 * @param m3 The third move
 	 *
 	 * @return true if and only if NONE of the moves are null. False otherwise.
 	*/

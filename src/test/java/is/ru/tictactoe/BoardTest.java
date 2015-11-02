@@ -162,5 +162,14 @@ public class BoardTest {
         board.addMove(8, true);
 
         assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // Top row with different values, no winner
+        board.addMove(0, false);
+        board.addMove(1, true);
+        board.addMove(2, false);
+
+        assertNull(board.checkWinner());
     }
 }
