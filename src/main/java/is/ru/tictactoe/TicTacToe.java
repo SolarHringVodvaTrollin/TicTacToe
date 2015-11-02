@@ -113,13 +113,13 @@ public class TicTacToe {
 		final boolean PLAYER2 = false;
 
 		ConsoleUI ui = new ConsoleUI();
-		TicTacToe game = new TicTacToe();
+		
 		SaveToFile saveToFile = new SaveToFile();
 
 		boolean firstPlayer = PLAYER1;
 
-		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
-
+		Boolean humanOrComputer = ui.players();
+		TicTacToe game = new TicTacToe(humanOrComputer);
 
 		do {
 			// TODO: Implement function to return some value representing player's choice.

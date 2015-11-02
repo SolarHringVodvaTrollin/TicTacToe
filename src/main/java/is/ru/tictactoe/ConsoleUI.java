@@ -166,9 +166,9 @@ public class ConsoleUI {
 			if(in.hasNextLine()) {
 				String input = in.nextLine();
 
-				if(	input == "n" || input == "N" ||
-					input == "s" || input == "S" ||
-					input == "q" || input == "Q")
+				if(	input.equals("n") || input.equals("N") ||
+					input.equals("s") || input.equals("S") ||
+					input.equals("q") || input.equals("Q"))
 						return input;
 				else {
 					System.out.println("Illegal input. Try again.");
@@ -176,5 +176,12 @@ public class ConsoleUI {
 			}
 			in.reset();
 		}
+	}
+
+	public Boolean players() {
+		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
+		String input = in.nextLine();
+
+		if(input.)
 	}
 }
