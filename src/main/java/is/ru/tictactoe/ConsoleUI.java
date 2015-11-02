@@ -56,7 +56,7 @@ public class ConsoleUI {
 		if(in.hasNextInt()) {
 			return in.nextInt();
 		}
-		return 0;
+		return -1;
 	}
 	
 	public String getInputFirstPlayer(){
