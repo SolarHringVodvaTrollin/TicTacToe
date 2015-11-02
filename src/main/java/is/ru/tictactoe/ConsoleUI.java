@@ -7,50 +7,46 @@ public class ConsoleUI {
 	}
 
 	public void draw() {
-		System.out.println("   |   |   ");
-		System.out.println("   |   |   ");
-		System.out.println("   |   |   ");
+		System.out.println(" 0 | 1 | 2 ");
+		System.out.println(" 3 | 4 | 5 ");
+		System.out.println(" 6 | 7 | 8 ");
+		System.out.println();
 	}
 
 	public static void draw(Board board) {
-	/*	Move[][] move = board.getMoves();
+		Move[] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
-			for(int j = 0; j < move.length; j++){
+			if(i == 3 || i == 6){
 
-				if(j == 1){ //Tegar j er 1 ta baetum vid vid linu til ad afmarka interfacid
-					if(move[i][j] != null){
-						Player player = move[i][j].getPlayer();
-						//Tegar buid er ad adda true false fidusnum
-						if(player.getSymbol()){
-							System.out.print("| X |");
-						}
-						else{
-							System.out.print("| O |");	
-						}
-					}
-					else{
-						System.out.print("|   |");
-					}
+				System.out.println();
+			}
+			if(i == 1 || i == 4 || i == 7){
+
+				if(move[i] == null){
+					System.out.print("|   |" );
 				}
-				else{ //Engar linur til ad afmarka interfacid
-					if(move[i][j] != null){
-						Player player = move[i][j].getPlayer();
-						//Tegar buid er ad adda True False fidusnum
-						if(player.getSymbol()) {
-							System.out.print(" X ");
-						}
-						else {
-							System.out.print(" O ");
-						}
-					}
-					else{
-						System.out.print("   ");
-					}
+				else if(move[i].getSymbol() == true){
+					System.out.print("| X |" );
+				}
+				else if(move[i].getSymbol() == false){
+					System.out.print("| O |" );
+				}
+			}	
+			else
+			{
+				if(move[i] == null){
+					System.out.print("   " );
+				}
+				else if(move[i].getSymbol() == true){
+					System.out.print(" X " );
+				}
+				else if(move[i].getSymbol() == false){
+					System.out.print(" O " );
 				}
 			}
-			System.out.println();
-		}*/
+		}
+		System.out.println();
 	}
 
 	public int getMove() {
@@ -128,9 +124,9 @@ public class ConsoleUI {
 			if(in.hasNext()) {
 				String input = in.next();
 
-				if(input == "y" || input == "Y")
+				if(input.equals("y") || input.equals("Y"))
 					return true;
-				else if(input == "n" || input == "N")
+				else if(input.equals("n") || input.equals("N"))
 					return false;
 				else {
 					System.out.println("Illegal input: '" + input + "'. Please enter either 'y' or 'n'");
