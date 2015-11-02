@@ -2,9 +2,9 @@ package is.ru.tictactoe;
 
 public class Move {
 	private int square;
-	private Boolean symbol;
+	private boolean symbol;
 
-	public Move(int square, Boolean symbol) throws IllegalArgumentException {
+	public Move(int square, boolean symbol) throws IllegalArgumentException {
 		if((square < 0) || (square > 8))
 			throw new IllegalArgumentException("Move is out of bounds");
 		this.symbol = symbol;
@@ -15,7 +15,7 @@ public class Move {
 		return square;
 	}
 
-	public Boolean getSymbol() {
+	public boolean getSymbol() {
 		return symbol;
 	}
 }
