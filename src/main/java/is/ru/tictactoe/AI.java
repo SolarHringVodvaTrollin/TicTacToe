@@ -16,8 +16,7 @@ import java.util.Random;
 		}
 
 		if(board.getMoveAt(randomMove) == null){
-			Move move = new Move(randomMove, false);
-			board.addMove(move);
+			board.addMove(i, false);
 		}
 		else {
 			for(int i = randomMove + 1; i < 9; i++){
@@ -25,8 +24,7 @@ import java.util.Random;
 					i = 0;
 				}
 				if(board.getMoveAt(i) == null){
-					Move move = new Move(i, false);
-					board.addMove(move);
+					board.addMove(i, false);
 					return;
 				}
 			}
