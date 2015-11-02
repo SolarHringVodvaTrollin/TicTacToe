@@ -55,15 +55,70 @@ public class ConsoleUI {
 
 	public int getMove() {
 		System.out.println("Enter square: ");
-
 		Scanner in = new Scanner(System.in);
 
 		if(in.hasNextInt()) {
 			return in.nextInt();
 		}
-
 		return 0;
 	}
+	
+	public String getInputFirstPlayer(){
+		Scanner in = new Scanner(System.in);
+		String firstPlayerName;
+		System.out.println("Enter name for Player 1:");
+
+		if(in.hasNext()){
+
+			firstPlayerName = in.next();
+		}
+		else{
+			return "kjánaplik";
+		}
+		return firstPlayerName;		
+	}
+
+	public String getInputSecondPlayer(){
+		Scanner in = new Scanner(System.in);
+		String secondPlayerName;
+		System.out.println("Enter name for Player 2:");
+
+		if(in.hasNext()){
+			secondPlayerName = in.next();
+		}
+		else{
+
+			return "kúkalabbi";
+		}
+		return secondPlayerName;
+	}
+
+	public int getInputNumber(){
+		Boolean validInput = false;
+		System.out.print( " please choose a box (0-8): ");
+
+		while(!validInput){
+			Scanner in = new Scanner(System.in);
+			
+			if(in.hasNextInt()){
+				int input = in.nextInt();
+			
+				if(input <= 8 && input >=0){
+					validInput = true;
+					return input;
+				
+				}
+				else {
+					System.out.println("Please enter a number between 0-8!");
+				}
+			}
+		
+			else {
+				System.out.println("Please enter a number between 0-8!");
+			}
+		}
+		return 0;
+	}	
 
 	public boolean promptContinue() {
 		Scanner in = new Scanner(System.in);
