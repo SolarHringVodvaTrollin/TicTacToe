@@ -13,13 +13,12 @@ public class TicTacToe {
 	 * Players will be named "Player 1" and "Player 2" by default and the board will be empty.
 	 */
 	public TicTacToe(boolean humanVsHuman) {
+		this.player1 = new Player("Player 1", true);
 		if(humanVsHuman){
-			this.player1 = new Player("Player 1", true);
 			this.player2 = new Player("Player 2", false);
 		}
 		else {
-			this.player1 = new Player("Player 1", true);
-			this.player2 = new AI("Player 2", false);
+			this.player2 = new ComputerPlayer("Player 2", false);
 		}
 
 		board = new Board();
@@ -105,6 +104,10 @@ public class TicTacToe {
 		board.reset();
 	}
 
+	public Board getBoard() {
+		return board;
+	}
+
 	/**
 	 *  Consider: Put main game code into run() function.
 	 *  Then the main function can consist solely of the following:
@@ -161,9 +164,16 @@ public class TicTacToe {
 						}
 					}
 					else {
-						int k = player2.generateMove(board);
-						game.makeMove(k, false);
+						ComputerPlayer comp = (ComputerPlayer)game.getPlayer(currentPlayer);
+						int move = comp.generateMove(game.getBoard());
+						if(game.makeMove(move, false)) {
+							System.out.println("Computer made a move");
+						}
+						else {
+							System.out.println("Computer tried to make an illegal move");
+						}
 					}
+					currentPlayer = !currentPlayer;
 				}
 			}
 

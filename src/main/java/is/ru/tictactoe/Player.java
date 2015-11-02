@@ -15,10 +15,6 @@ public class Player {
 		score = 0;
 	}
 
-	public int generateMove(Board board) {
-		return -1;
-	}
-	
 	public String getName(){
 		return name;
 	}
