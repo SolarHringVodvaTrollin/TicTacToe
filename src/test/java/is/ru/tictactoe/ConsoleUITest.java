@@ -27,4 +27,5 @@ public class ConsoleUITest {
         board.addMove(move4);
         //assertEquals(" X | O | X \n O |   |   \n   |   |   ",ConsoleUI.draw(board));
     */}
+
 }
