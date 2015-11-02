@@ -1,5 +1,6 @@
 package is.ru.tictactoe;
 
+import java.lang.NullPointerException;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -88,88 +89,78 @@ public class BoardTest {
     public void testCheckWinner() {
         //Testing for player 'X'
         Board board = new Board();
-        //Top row
-        Move move1 = new Move(0, true);
-        Move move2 = new Move(1, true);
-        Move move3 = new Move(2, true);
 
-        board.addMove(move1);
-        board.addMove(move2);
-        board.addMove(move3);
-
-        assertTrue(board.checkWinner());
-
-        //Second column
-        Move move4 = new Move(3, true);
-        Move move5 = new Move(6, true);
-
-        board.addMove(move4);
-        board.addMove(move5);
-
-        assertTrue(board.checkWinner());
-
-        //Diagonal from upper left
-        Move move6 = new Move(4, true);
-        Move move7 = new Move(8, true);
-
-        board.addMove(move6);
-        board.addMove(move7);
-
-        assertTrue(board.checkWinner());
+        // Empty board, no winner
+        assertNull(board.checkWinner());
 
         //Third column
-        Move move15 = new Move(5, true);
-
-        board.addMove(move15);
-
-        assertTrue(board.checkWinner());
-
-        //Bottom row
-        Move move16 = new Move(7, true);
-
-        board.addMove(move16);
+        board.addMove(2, true);
+        board.addMove(5, true);
+        board.addMove(8, true);
 
         assertTrue(board.checkWinner());
 
-        //================================
-        //Now testing for player 'O'
-    
-        Board board2 = new Board();
-        //Middle row
-        Move move8 = new Move(3, false);
-        Move move9 = new Move(4, false);  
-        Move move10 = new Move(5, false);
+        board = new Board();
 
-        board2.addMove(move8);
-        board2.addMove(move9);
-        board2.addMove(move10);
+        // Bottom row
+        board.addMove(6, false);
+        board.addMove(7, false);
+        board.addMove(8, false);
 
-        assertFalse(board2.checkWinner());
+        assertFalse(board.checkWinner());
 
-        //Second column
-        Move move11 = new Move(1, false);
-        Move move12 = new Move(7, false);
+        board = new Board();
 
-        board2.addMove(move11);
-        board2.addMove(move12);
+        // Middle column
+        board.addMove(1, false);
+        board.addMove(4, false);
+        board.addMove(7, false);
 
-        assertFalse(board2.checkWinner());
+        assertFalse(board.checkWinner());
+
+        board = new Board();
 
         //Diagonal from upper right
-        Move move13 = new Move(2, false);
-        Move move14 = new Move(6, false);
+        board.addMove(2, true);
+        board.addMove(4, true);
+        board.addMove(6, true);
 
-        board2.addMove(move13);
-        board2.addMove(move14);
+        assertTrue(board.checkWinner());
 
-        assertFalse(board2.checkWinner());
+        board = new Board();
 
-        //Check if neither has won
-        Move move17 = new Move(6, true);
+        // Top row
+        board.addMove(0, true);
+        board.addMove(1, true);
+        board.addMove(2, true);
 
-        board2.addMove(move17);
+        assertTrue(board.checkWinner());
 
-        assertNull(board2.checkWinner());
+        board = new Board();
 
+        // First column
+        board.addMove(0, true);
+        board.addMove(3, true);
+        board.addMove(6, true);
+
+        assertTrue(board.checkWinner());
+
+        board = new Board();
+
+        // Middle row
+        board.addMove(3, false);
+        board.addMove(4, false);
+        board.addMove(5, false);
+
+        assertFalse(board.checkWinner());
+
+        board = new Board();
+
+        // Left->right diagonal
+        board.addMove(0, true);
+        board.addMove(4, true);
+        board.addMove(8, true);
+
+        assertTrue(board.checkWinner());
     }
 }

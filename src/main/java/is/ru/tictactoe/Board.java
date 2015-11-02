@@ -1,4 +1,5 @@
 package is.ru.tictactoe;
+import java.lang.NullPointerException;
 
 public class Board {
 	private Move[] board;
@@ -7,10 +8,6 @@ public class Board {
 	public Board() {
 		board = new Move[9];
 		moveCount = 0;
-	}
-
-	public Boolean checkWinner() {
-		return null;
 	}
 
 	/**
@@ -49,6 +46,13 @@ public class Board {
 		return moveCount == 9;
 	}
 
+	private boolean checkThree(Move m1, Move m2, Move m3) {
+		if(m1 == null)	return false;
+		if(m2 == null)	return false;
+		if(m3 == null)	return false;
+		return true;
+	}
+
 	/**
 	*Returns the winner's symbol which is true for 'X' and false for 'O'.
 	*If neither player is a winner then it will return NULL. 
@@ -65,64 +69,55 @@ public class Board {
 		[6][7][8]
 		*/
 
-		Boolean result = null;
-
 		// Check top row
-		if(		board[0] != null && 	board[1] != null && 	board[2] != null) {
-			if(	board[0].getSymbol() == board[1].getSymbol() == board[2].getSymbol()) {
+		if(checkThree(board[0], board[1], board[2])) {
+			if((board[0].getSymbol() == board[1].getSymbol()) && (board[1].getSymbol() == board[2].getSymbol())) {
 				return board[0].getSymbol();
 			}
 		}
-		// Check middle row
-		if(		board[3] != null && 	board[4] != null && 	board[5] != null) {
-			if(	board[3].getSymbol() == board[4].getSymbol() == board[5].getSymbol()) {
+
+		if(checkThree(board[3], board[4], board[5])) {
+			if((board[3].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[5].getSymbol())) {
 				return board[3].getSymbol();
 			}
 		}
 
-		// Check bottom row
-		if(		board[6] != null && 	board[7] != null && 	board[8] != null) {
-			if(	board[6].getSymbol() == board[7].getSymbol() == board[8].getSymbol()) {
+		if(checkThree(board[6], board[7], board[8])) {
+			if((board[6].getSymbol() == board[7].getSymbol()) && (board[7].getSymbol() == board[8].getSymbol())) {
 				return board[6].getSymbol();
 			}
 		}
 
-		// Check leftmost column
-		if(		board[0] != null && 	board[3] != null && 	board[6] != null) {
-			if(	board[0].getSymbol() == board[3].getSymbol() == board[6].getSymbol()) {
+		if(checkThree(board[0], board[3], board[6])) {
+			if((board[0].getSymbol() == board[3].getSymbol()) && (board[3].getSymbol() == board[6].getSymbol())) {
 				return board[0].getSymbol();
 			}
 		}
 
-		// Check middle column
-		if(		board[1] != null && 	board[4] != null && 	board[7] != null) {
-			if(	board[1].getSymbol() == board[4].getSymbol() == board[7].getSymbol()) {
+		if(checkThree(board[1], board[4], board[7])) {
+			if((board[1].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[7].getSymbol())) {
 				return board[1].getSymbol();
 			}
 		}
 
-		// Check rightmost column
-		if(		board[2] != null && 	board[5] != null && 	board[8] != null) {
-			if(	board[2].getSymbol() == board[5].getSymbol() == board[8].getSymbol()) {
+		if(checkThree(board[2], board[5], board[8])) {
+			if((board[2].getSymbol() == board[5].getSymbol()) && (board[5].getSymbol() == board[8].getSymbol())) {
 				return board[2].getSymbol();
 			}
 		}
 
-		// Check left->right diagonal
-		if(		board[0] != null && 	board[4] != null && 	board[8] != null) {
-			if(	board[0].getSymbol() == board[4].getSymbol() == board[8].getSymbol()) {
+		if(checkThree(board[0], board[4], board[8])) {
+			if((board[0].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[8].getSymbol())) {
 				return board[0].getSymbol();
 			}
 		}
 
-		// Check right->left diagonal
-		if(		board[2] != null && 	board[4] != null && 	board[6] != null) {
-			if(	board[2].getSymbol() == board[4].getSymbol() == board[6].getSymbol()) {
+		if(checkThree(board[2], board[4], board[6])) {
+			if((board[2].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[6].getSymbol())) {
 				return board[2].getSymbol();
 			}
-		}	
-
-		// If we got here, there is no winner and we return null
+		}
+		
 		return null;
 	}
 }   
