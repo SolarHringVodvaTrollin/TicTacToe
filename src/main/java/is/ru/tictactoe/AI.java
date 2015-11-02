@@ -2,13 +2,17 @@ package is.ru.tictactoe;
 
 import java.util.Random;
 
-public class AI extends Player{
+ class AI extends Player{
+
+	public AI(String name, Boolean symbol) {
+		 super(name, symbol);
+	}
 	
-	public int generateMove(Board board) {
+	public void generateMove(Board board) {
 		Random rmove = new Random();
 		int randomMove = rmove.nextInt(8);
 		if(board.isFull()) {
-			return null;
+			return;
 		}
 
 		if(board.getMoveAt(randomMove) == null){
@@ -22,7 +26,7 @@ public class AI extends Player{
 				}
 				if(board.getMoveAt(i) == null){
 					Move move = new Move(i, false);
-					board.addMove(i);
+					board.addMove(move);
 					return;
 				}
 			}

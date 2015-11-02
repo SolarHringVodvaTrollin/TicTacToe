@@ -10,8 +10,8 @@ public class SaveToFile {
 	private File gamesInfo;
 	private BufferedWriter outputPlayerInfo;
 	private BufferedWriter outputGamesInfo;
-	private BufferedReader inputPlayerInfo;
-	private BufferedReader inputGamesInfo;
+	//private BufferedReader inputPlayerInfo;
+	//private BufferedReader inputGamesInfo;
 
 	/**
 	 *Creates a new instance of a SaveToFile class.
@@ -31,12 +31,12 @@ public class SaveToFile {
 			
 			FileWriter fwGame = new FileWriter(gamesInfo.getAbsoluteFile(), true);
 			FileWriter fwPlayer = new FileWriter(playerInfo.getAbsoluteFile(), true);
-			FileReader frGame = new FileReader(gamesInfo.getAbsoluteFile());
-			FileReader frPlayer = new FileReader(playerInfo.getAbsoluteFile());
+			//FileReader frGame = new FileReader(gamesInfo.getAbsoluteFile());
+			//FileReader frPlayer = new FileReader(playerInfo.getAbsoluteFile());
 			outputGamesInfo = new BufferedWriter(fwGame);
 			outputPlayerInfo = new BufferedWriter(fwPlayer);
-			inputGamesInfo = new BufferedReader(frGame);
-			inputPlayerInfo = new BufferedReader(frPlayer);
+			//inputGamesInfo = new BufferedReader(frGame);
+			//inputPlayerInfo = new BufferedReader(frPlayer);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
