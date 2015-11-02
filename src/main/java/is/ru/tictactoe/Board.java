@@ -81,60 +81,37 @@ public class Board {
 		[6][7][8]
 		*/
 
-		// Check top row
-		if(checkThree(board[0], board[1], board[2])) {
-			if((board[0].getSymbol() == board[1].getSymbol()) && (board[1].getSymbol() == board[2].getSymbol())) {
-				return board[0].getSymbol();
-			}
-		}
+		//Check rows
+	    for(int i = 0; i <= 6; i+=3) {
+	      if(checkThree(board[i], board[i+1], board[i+2])) {
+	        if((board[i].getSymbol() == board[i+1].getSymbol()) && (board[i+1].getSymbol() == board[i+2].getSymbol())) {
+	          return board[i].getSymbol();
+	        }
+	      }
+	    }
 
-		// Check middle row
-		if(checkThree(board[3], board[4], board[5])) {
-			if((board[3].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[5].getSymbol())) {
-				return board[3].getSymbol();
-			}
-		}
-		// Check bottom row
-		if(checkThree(board[6], board[7], board[8])) {
-			if((board[6].getSymbol() == board[7].getSymbol()) && (board[7].getSymbol() == board[8].getSymbol())) {
-				return board[6].getSymbol();
-			}
-		}
+	    //Check columns
+	    for(int i = 0; i < 3; i++) {
+	      if(checkThree(board[i], board[i+3], board[i+6])) {
+	        if((board[i].getSymbol() == board[i+3].getSymbol()) && (board[i+3].getSymbol() == board[i+6].getSymbol())) {
+	          return board[i].getSymbol();
+	        }
+	      }
+	    }
 
-		// Check first column
-		if(checkThree(board[0], board[3], board[6])) {
-			if((board[0].getSymbol() == board[3].getSymbol()) && (board[3].getSymbol() == board[6].getSymbol())) {
-				return board[0].getSymbol();
-			}
-		}
+	    // Check left->right diagonal
+	    if(checkThree(board[0], board[4], board[8])) {
+	      if((board[0].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[8].getSymbol())) {
+	        return board[0].getSymbol();
+	      }
+	    }
 
-		// Check middle column
-		if(checkThree(board[1], board[4], board[7])) {
-			if((board[1].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[7].getSymbol())) {
-				return board[1].getSymbol();
-			}
-		}
-
-		// Check third column
-		if(checkThree(board[2], board[5], board[8])) {
-			if((board[2].getSymbol() == board[5].getSymbol()) && (board[5].getSymbol() == board[8].getSymbol())) {
-				return board[2].getSymbol();
-			}
-		}
-
-		// Check left->right diagonal
-		if(checkThree(board[0], board[4], board[8])) {
-			if((board[0].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[8].getSymbol())) {
-				return board[0].getSymbol();
-			}
-		}
-
-		// Check right->left diagonal
-		if(checkThree(board[2], board[4], board[6])) {
-			if((board[2].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[6].getSymbol())) {
-				return board[2].getSymbol();
-			}
-		}
+	    // Check right->left diagonal
+	    if(checkThree(board[2], board[4], board[6])) {
+	      if((board[2].getSymbol() == board[4].getSymbol()) && (board[4].getSymbol() == board[6].getSymbol())) {
+	        return board[2].getSymbol();
+	      }
+	    }
 
 		// If we get here, no winner was found, and we return null
 		return null;
