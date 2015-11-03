@@ -36,6 +36,7 @@ public class ConsoleUI {
 
 /**
 * This method draws (prints out to the screen) the grid and also assigns 'x' when true and 'o' when false to distinguish between two players
+* @param board a grid 3x3 for the game
 */
 	public static void draw(Board board) {
 		System.out.println();
@@ -92,6 +93,7 @@ public class ConsoleUI {
 
 	/**
 	* This method prints out to the screen which player´s turn is up
+	* @param player An instance of the player
 	*/
 
 	public void displayTurn(Player player) {
@@ -100,7 +102,6 @@ public class ConsoleUI {
 
 	/**
 	* This method gets the name of the first player
-	* @param firstPlayerName the name of the first player
 	* @return returns the string with the name of the first player
 	*/
 	public String getInputFirstPlayer(){
@@ -120,7 +121,6 @@ public class ConsoleUI {
 
 	/**
 	* This method gets the name of the second player
-	* @param secondPlayerName the name of the second player
 	* @return returns the string with the name of the second player
 	*/
 
@@ -141,7 +141,7 @@ public class ConsoleUI {
 
 	/**
 	* This method gets the input from the player, validates it (checks if it is in range 0-8)
-	* @param validInput is a boolean variable that is set to false as default, if the input from user meets the requirements it will be changed to true
+	* @return an integer which is an input from the player 
 	*/
 	public int getInputNumber(){
 		Boolean validInput = false;
@@ -172,6 +172,7 @@ public class ConsoleUI {
 
 	/**
 	* This method returns boolean value (true/false) that depends on the input from the user whether he/she wants to continue the game, if so the game will be set to reset.
+	* @return boolean value true if the player wants to play another round or false when the player does not wants to play another turn
 	*/	
 	public boolean promptContinue() {
 		Scanner in = new Scanner(systemIn);
@@ -196,6 +197,7 @@ public class ConsoleUI {
 
 	/**
 	* This method prints out to the screen the name of the winner or the massage that there is a tie
+	* @param winner the player that has won a game
 	*/
 
 	public void display(Player winner) {
@@ -209,6 +211,8 @@ public class ConsoleUI {
 
 	/**
 	* This method prints out to the screen the current score
+	* @param p1 an instance of the Player1
+	* @param p2 an instance of the Player2
 	*/
 
 	public void displayScore(Player p1, Player p2) {
@@ -219,6 +223,7 @@ public class ConsoleUI {
 
 	/**
 	* This method prints out a prompt
+	* @return a string from the player or an empty string when there was no input from the player
 	*/
 
 	public String displayPrompt() {
@@ -233,7 +238,6 @@ public class ConsoleUI {
 
 	/**
 	 * Displays the help for the user interface
-	 * TODO: Implement
 	 */
 	public void displayHelp() {
 		System.out.println("The following commands are available:\n");
@@ -286,6 +290,8 @@ public class ConsoleUI {
 
 	/**
 	* This method displays message that confirms name change
+	* @param newname a string input from the user wwhich contains a new name of the player
+	* @param oldname a string input from the user wwhich contains an old name of the player
 	*/
 
 	public void confirmNameChange(String newname, String oldname) {
@@ -295,6 +301,7 @@ public class ConsoleUI {
 	/**
 	* This method allows the player to choose hers/his opponent
 	* It requires an character input from the player, the letter 'H' for the human opponent or the letter 'C' for the computerAI
+	* @return boolean value true when player choses to play agains another human player or false when player choses to play against the computerAI
 	*/
 
 	public Boolean players() {
@@ -319,6 +326,7 @@ public class ConsoleUI {
 	/**
 	* This method prints out to the screen message to the user that the string input that was entered is invalid.
 	* It also suggests to the user the possibility of typing command 'help' for help 
+	* @param arg string input that was entered by the user
 	*/
 	public void invalidArgument(String arg) {
 		System.out.println("Invalid argument '" + arg + "'. Type 'help' for help.");
@@ -336,6 +344,7 @@ public class ConsoleUI {
 	/**
 	* This method prints out to the screen message to the user that the command that was entered is invalid.
 	* It also suggests to the user the possibility of typing command 'help' for help 
+	* @param com command that was entered by the user
 	*/
 
 	public void invalidCommand(String com) {
@@ -344,6 +353,8 @@ public class ConsoleUI {
 
 	/**
 	* This method propmts from the player a confirmation (boolean answer: yes or no) before performing an action, gives him/her a warning if their action causes some changes to the game
+	* @param action a string from the user with an action that user wishes to perform
+	* @return boolean value true when player confirms his/hers action, or false when player cancels his/hers action
 	*/
 
 	public boolean confirmAction(String action) {
