@@ -1,0 +1,15 @@
+#!/bin/bash
+
+APP="TicTacToe"
+
+bin/clean
+bin/package
+bin/makedocs
+
+test -f /Games/${APP} && rm -r ~/Games/${APP}
+mkdir -p ~/Games/${APP}/Docs
+
+cp -r build/install/${APP} ~/Games
+cp -r build/Docs ~/Games/${APP}/
+
+~/Games/${APP}/bin/${APP}
