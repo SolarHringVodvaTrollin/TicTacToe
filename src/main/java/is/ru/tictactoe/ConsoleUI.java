@@ -50,13 +50,16 @@ public class ConsoleUI {
 	}
 
 	public int getMove() {
-		System.out.println("Enter square: ");
 		Scanner in = new Scanner(System.in);
 
 		if(in.hasNextInt()) {
 			return in.nextInt();
 		}
 		return -1;
+	}
+
+	public void displayTurn(Player player) {
+		System.out.print(player.getName() + "'s turn (" + (player.getSymbol() ? "X" : "O") + "). ");
 	}
 	
 	public String getInputFirstPlayer(){
@@ -137,7 +140,7 @@ public class ConsoleUI {
 	}
 
 	public void promptIllegalMove() {
-		System.out.println("Illegal move. Is the square already occupied or are you trying to make an out-of-bounds move?");
+		System.out.println("Illegal move.");
 	}
 
 	public void display(Player winner) {
@@ -155,26 +158,108 @@ public class ConsoleUI {
 		System.out.println(p2.getName() + ":\t" + p2.getScore());
 	}
 
-	public String displayOptions() {
-		System.out.println("[N]ew round\n[S]core\n[Q]uit");
+	public String displayPrompt() {
+		System.out.print("$ ");
 
 		Scanner in = new Scanner(System.in);
 
-		boolean isValid;
+		if(in.hasNextLine())
+			return in.nextLine();
+		else
+			return "";
+	}
 
+	/**
+	 * Displays the help for the user interface
+	 * TODO: Implement
+	 */
+	public void displayHelp() {
+		System.out.println("The following commands are available:\n");
+
+		System.out.println("- play human   \t\t\tStarts a new game against a human player.");
+		System.out.println("- play computer\t\t\tStarts a new game against a computer player.");
+		System.out.println();
+
+		System.out.println("- score\t\t\t\tSee the current score.");
+		System.out.println();
+
+		System.out.println("- setname player1 <newname>\tSets the name of player 1 to <newname>.");
+		System.out.println("- setname player2 <newname>\tSets the name of player 2 to <newname>.");
+		System.out.println();
+
+		System.out.println("- reset\t\t\t\tResets the game (score and player names).");
+		System.out.println();
+
+		System.out.println("- quit\t\t\t\tExits the game.");
+		System.out.println();
+
+		System.out.println("- help\t\t\t\tDisplays this help screen.");
+		System.out.println();
+	}
+
+	public void displayWelcome() {
+		System.out.println("Welcome to Tic Tac Toe!\n");
+		displayHelp();
+	}
+
+	public void displayGoodbye() {
+		System.out.println("Bye!");
+	}
+
+	public void displayReset() {
+		System.out.println("The game has been reset.");
+	}
+
+	public void confirmNameChange(String newname, String oldname) {
+			System.out.println("Name changed from '" + oldname + "' to '" + newname + "'.");
+	}
+
+	public Boolean players() {
+		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
+		
+		Scanner in = new Scanner(System.in);
+		
+		String input = in.nextLine();
 		while(true) {
-			if(in.hasNextLine()) {
-				String input = in.nextLine();
-
-				if(	input == "n" || input == "N" ||
-					input == "s" || input == "S" ||
-					input == "q" || input == "Q")
-						return input;
-				else {
-					System.out.println("Illegal input. Try again.");
-				}
+			if(input.equals("H") || input.equals("h")) {
+				return true;
 			}
-			in.reset();
+			else if(input.equals("C") || input.equals("c")) {
+				return false;
+			}
+			else {
+				System.out.println("Invalid input, please insert eather H for human player or C for computer player.");
+			}
 		}
+	}
+
+	public void invalidArgument(String arg) {
+		System.out.println("Invalid argument '" + arg + "'. Type 'help' for help.");
+	}
+
+	public void invalidArgument() {
+		System.out.println("Invalid argument. Type 'help' for help.");
+	}
+
+	public void invalidCommand(String com) {
+		System.out.println("Invalid command '" + com + "'. Type 'help' for help.");
+	}
+
+	public boolean confirmAction(String action) {
+		System.out.println("Are you sure you want to " + action + "?");
+		if(action.toLowerCase().equals("reset")) 
+			System.out.print("You will lose your score [y/n]: ");
+		else if(action.toLowerCase().equals("quit"))
+			System.out.print("All data will be lost [y/n]: ");
+
+		Scanner in = new Scanner(System.in);
+
+		while(in.hasNextLine()) {
+			String input = in.nextLine();
+
+			if(input.toLowerCase().startsWith("y"))			return true;
+			else if(input.toLowerCase().startsWith("n"))	return false;
+		}
+		return false;
 	}
 }
