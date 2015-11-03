@@ -89,6 +89,7 @@ public class SaveToFile {
 		}
 	}
 
+	/*
 	public void updatePlayerScore(String name) {
 		File tempFile = new File("file.txt");
 		tempFile.createNewFile();
