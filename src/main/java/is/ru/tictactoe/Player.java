@@ -27,8 +27,8 @@ public class Player {
 	 * @throws IllegalArgumentException if name is an empty string
 	 */
 	public void setName(String name) throws IllegalArgumentException {
-		if(name == "")
-			throw new IllegalArgumentException("Name cannot be empty");
+		//if(name == "")
+		//	throw new IllegalArgumentException("Name cannot be empty");
 
 		this.name = name;
 	}
