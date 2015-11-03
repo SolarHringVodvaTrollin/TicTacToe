@@ -3,6 +3,11 @@ import java.util.Scanner;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+* This class takes care of the gameplay, prints out the board, gets input from the users
+* @author SolarHringVodvaTrollin
+* @since 2.11.2015
+*/
 public class ConsoleUI {
 
 	private InputStream systemIn;
@@ -18,6 +23,10 @@ public class ConsoleUI {
 		systemOut = out;
 	}
 
+/**
+* This method draws (prints out to the screen) the numbered grid for the Tic Tac Toe game
+*/
+
 	public void draw() {
 		System.out.println(" 0 | 1 | 2 ");
 		System.out.println(" 3 | 4 | 5 ");
@@ -25,7 +34,11 @@ public class ConsoleUI {
 		System.out.println();
 	}
 
+/**
+* This method draws (prints out to the screen) the grid and also assigns 'x' when true and 'o' when false to distinguish between two players
+*/
 	public static void draw(Board board) {
+		System.out.println();
 		Move[] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
@@ -61,6 +74,11 @@ public class ConsoleUI {
 		System.out.println();
 	}
 
+	/**
+	* This method fetches moves from players. The move is an integer.
+	* @return if there is a possible move the return statement will return the integer with the index to the squere that was chosen by player, otherwise it returns -1.
+	*/
+
 	public int getMove() {
 		System.out.println("Enter square: ");
 		Scanner in = new Scanner(systemIn);
@@ -71,11 +89,20 @@ public class ConsoleUI {
 		return -1;
 	}
 
+
+	/**
+	* This method prints out to the screen which player´s turn is up
+	*/
+
 	public void displayTurn(Player player) {
 		System.out.print(player.getName() + "'s turn (" + (player.getSymbol() ? "X" : "O") + "). ");
 	}
-	
-	// TODO: Sameina í eitt fall, getName(boolean player)
+
+	/**
+	* This method gets the name of the first player
+	* @param firstPlayerName the name of the first player
+	* @return returns the string with the name of the first player
+	*/
 	public String getInputFirstPlayer(){
 		Scanner in = new Scanner(systemIn);
 		String firstPlayerName;
@@ -90,6 +117,12 @@ public class ConsoleUI {
 		}
 		return firstPlayerName;		
 	}
+
+	/**
+	* This method gets the name of the second player
+	* @param secondPlayerName the name of the second player
+	* @return returns the string with the name of the second player
+	*/
 
 	public String getInputSecondPlayer(){
 		Scanner in = new Scanner(systemIn);
@@ -106,7 +139,10 @@ public class ConsoleUI {
 		return secondPlayerName;
 	}
 
-	// TODO: Eyða, fallið getMove() kemur í staðinn
+	/**
+	* This method gets the input from the player, validates it (checks if it is in range 0-8)
+	* @param validInput is a boolean variable that is set to false as default, if the input from user meets the requirements it will be changed to true
+	*/
 	public int getInputNumber(){
 		Boolean validInput = false;
 		System.out.print( " please choose a box (0-8): ");
@@ -132,8 +168,11 @@ public class ConsoleUI {
 			}
 		}
 		return 0;
-	}	
+	}
 
+	/**
+	* This method returns boolean value (true/false) that depends on the input from the user whether he/she wants to continue the game, if so the game will be set to reset.
+	*/	
 	public boolean promptContinue() {
 		Scanner in = new Scanner(systemIn);
 		System.out.println("Would you like to play another round? [y/n] ");
@@ -147,9 +186,17 @@ public class ConsoleUI {
 		return false;
 	}
 
+	/**
+	* This method prints out to the screen message to the player when the move is illegal.
+	*/
+
 	public void promptIllegalMove() {
 		System.out.println("Illegal move.");
 	}
+
+	/**
+	* This method prints out to the screen the name of the winner or the massage that there is a tie
+	*/
 
 	public void display(Player winner) {
 		if(winner == null) {
@@ -160,15 +207,22 @@ public class ConsoleUI {
 		}
 	}
 
+	/**
+	* This method prints out to the screen the current score
+	*/
+
 	public void displayScore(Player p1, Player p2) {
 		System.out.println("Current score:");
 		System.out.println(p1.getName() + ":\t" + p1.getScore());
 		System.out.println(p2.getName() + ":\t" + p2.getScore());
 	}
 
+	/**
+	* This method prints out a prompt
+	*/
+
 	public String displayPrompt() {
 		System.out.print("$ ");
-
 		Scanner in = new Scanner(systemIn);
 
 		if(in.hasNextLine())
@@ -205,22 +259,43 @@ public class ConsoleUI {
 		System.out.println();
 	}
 
+	/**
+	* This method prints to the screen message when the game starts
+	*/
+
 	public void displayWelcome() {
 		System.out.println("Welcome to Tic Tac Toe!\n");
 		displayHelp();
 	}
 
+	/**
+	* This method prints to the screen message at the end of the game
+	*/
+
 	public void displayGoodbye() {
 		System.out.println("Bye!");
 	}
+
+	/**
+	* This method prints to the screen message where the players are informed that the game has been reset
+	*/
 
 	public void displayReset() {
 		System.out.println("The game has been reset.");
 	}
 
+	/**
+	* This method displays message that confirms name change
+	*/
+
 	public void confirmNameChange(String newname, String oldname) {
 			System.out.println("Name changed from '" + oldname + "' to '" + newname + "'.");
 	}
+
+	/**
+	* This method allows the player to choose hers/his opponent
+	* It requires an character input from the player, the letter 'H' for the human opponent or the letter 'C' for the computerAI
+	*/
 
 	public Boolean players() {
 		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
@@ -241,17 +316,35 @@ public class ConsoleUI {
 		}
 	}
 
+	/**
+	* This method prints out to the screen message to the user that the string input that was entered is invalid.
+	* It also suggests to the user the possibility of typing command 'help' for help 
+	*/
 	public void invalidArgument(String arg) {
 		System.out.println("Invalid argument '" + arg + "'. Type 'help' for help.");
 	}
+
+	/**
+	* This method prints out to the screen message to the user that the argument is invalid.
+	* It also suggests to the user the possibility of typing command 'help' for help 
+	*/
 
 	public void invalidArgument() {
 		System.out.println("Invalid argument. Type 'help' for help.");
 	}
 
+	/**
+	* This method prints out to the screen message to the user that the command that was entered is invalid.
+	* It also suggests to the user the possibility of typing command 'help' for help 
+	*/
+
 	public void invalidCommand(String com) {
 		System.out.println("Invalid command '" + com + "'. Type 'help' for help.");
 	}
+
+	/**
+	* This method propmts from the player a confirmation (boolean answer: yes or no) before performing an action, gives him/her a warning if their action causes some changes to the game
+	*/
 
 	public boolean confirmAction(String action) {
 		System.out.println("Are you sure you want to " + action + "?");

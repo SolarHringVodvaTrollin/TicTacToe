@@ -1,5 +1,7 @@
 package is.ru.tictactoe;
 
+import java.util.Random;
+
 public class TicTacToe {
 
 	private final boolean COMPUTER = false;
@@ -26,6 +28,14 @@ public class TicTacToe {
 		ui = new ConsoleUI();
 	}
 
+	/**
+	* This method implements the gameplay. Player1 takes turn and then Player2
+	* @param firstPlayer is the player that starts the game. At the beginning of the game this variable is set to PLAYER1
+	* @param currentPlayer is the player that has her/his turn to move. At the beginning of the game this variable is set to player1
+	* @param comp is a computerAI player
+	* @param winner is the player that has won the game
+	*/
+
 	private void play(boolean opponent) {
 		boolean firstPlayer = PLAYER1;
 
@@ -44,15 +54,16 @@ public class TicTacToe {
 					}
 				}
 				else {
-					ComputerPlayer comp = (ComputerPlayer)player2;
-					int move = comp.generateMove(getBoard());
-					if(makeMove(move, false)) {
-						System.out.println("Computer made a move");
+					if(currentPlayer == PLAYER1) {
+						while(!makeMove(ui.getMove(), currentPlayer)) {
+							ui.promptIllegalMove();
+						}
 					}
 					else {
-						System.out.println("Computer tried to make an illegal move");
+						makeRandomMove(currentPlayer);
 					}
 				}
+
 				currentPlayer = !currentPlayer;
 			}
 
@@ -87,8 +98,7 @@ public class TicTacToe {
 			if(userInput.toLowerCase().startsWith("play")) {
 				if(tokens.length > 1) {
 					if(tokens[1].toLowerCase().equals("computer")) {
-						System.out.println("Sorry, not implemented yet!");
-						//play(COMPUTER);
+						play(COMPUTER);
 					}
 					else if(tokens[1].toLowerCase().equals("human")) {
 						play(HUMAN);
@@ -154,7 +164,7 @@ public class TicTacToe {
 
 	/**
 	 * Returns the player object which is the winner of the game according to the current board state, or null if there is no winner.
-	 *
+	 * @param winner is the player that has won the game
 	 * @return the player object associated with the winning player, or null if there is no winner.
 	 */
 	public Player getWinner() {
@@ -194,6 +204,37 @@ public class TicTacToe {
 	}
 
 	/**
+	 * Generates a random move for the specified player
+	 *
+	 * @param player The player to generate the move for
+	 * 
+	 * @return true if the move was successfully made, false otherwise.
+	  */
+	public boolean makeRandomMove(boolean player) {
+		Random rmove = new Random();
+		int randomMove = rmove.nextInt(9);
+		
+		if(isFull()) {
+			return false;
+		}
+
+		if(board.getMoveAt(randomMove) == null) {
+			return board.addMove(randomMove, player);
+		}
+		else {
+			for(int i = randomMove + 1; i <= 9; i++){
+				if(i == 9) {
+					i = 0;
+				}
+
+				if(board.getMoveAt(i) == null){
+					return board.addMove(i, player);
+				}
+			}
+		}
+		return false;
+	}
+	/**
 	 * Checks whether the game board has been filled.
 	 * 
 	 * @return true if and only if the board is full (has 9 moves), false otherwise.
@@ -228,22 +269,17 @@ public class TicTacToe {
 		else		player2.setName(name);
 	}
 
+	/**
+	* This method resets all moves
+	*/
 	public void resetBoard() {
 		board.reset();
 	}
 
+	/**
+	* This method sets new board
+	*/
 	public Board getBoard() {
 		return board;
-	}
-
-	/**
-	 *  Consider: Put main game code into run() function.
-	 *  Then the main function can consist solely of the following:
-	 *
-	 *  TicTacToe game = new TicTacToe(new UiToUse);
-	 *	game.run();
-	 */
-	public static void main(String[] args) {
-
 	}
 }
