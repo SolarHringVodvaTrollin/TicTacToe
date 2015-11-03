@@ -10,15 +10,24 @@ Instructions for installing and running the program on clients computer.
  
   	-  [Instructions for installing Java JDK](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html#CJAGAACB)
 
-		(Instructions available for Windows, OS X and Linux)
- 
- - [Click her to download TicTacToe.zip](https://github.com/SolarHringVodvaTrollin/TicTacToe/archive/master.zip)
+2. Download the .zip and unpack it on your computer
+
+	- [Direct link to TicTacToe.zip](https://github.com/SolarHringVodvaTrollin/TicTacToe/archive/master.zip)
+
 	
- - In order to run the program you need a terminal. This could be Powershell for Windows or any bash shell for Unix.
+3.  In order to run the program you need a terminal. This can be Powershell for Windows or any bash shell for Unix.
  
- - 	in order to install the project you need to run the script bin/install for Unix or bin/install.bat for Windows. 
+ - 	To install the program you need to run the script 	
+
+
+		`   bin/install` for Unix  
+ 						
+
+		`   bin/install.bat` for Windows 
  
- - The project will be installed into the folder ~/Games for Unix and C:\Games for Windows.
+ - The project will be installed into the folder 
+  	`~/Games` for Unix and 
+  	`C:\Games` for Windows.
  
 
 
