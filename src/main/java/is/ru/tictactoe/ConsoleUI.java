@@ -26,6 +26,7 @@ public class ConsoleUI {
 	}
 
 	public static void draw(Board board) {
+		System.out.println();
 		Move[] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
