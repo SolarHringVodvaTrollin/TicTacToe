@@ -74,7 +74,7 @@ public class SaveToFile {
 	/**
 	 *Adds the winner of a match to the gamesInfo file.
 	 *
-	 *@param name of the player, should be "no winner" if there was no winner
+	 * @param winner name of the player, should be "no winner" if there was no winner
 	 */
 	//TODO add upadating feature so playerInfo file gets updated when set player wins.
 	public void saveGameToFile(String winner){
