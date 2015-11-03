@@ -172,7 +172,7 @@ public class TicTacToe {
 
 	/**
 	 * Returns the player object which is the winner of the game according to the current board state, or null if there is no winner.
-	 * 
+	 *
 	 * @return the player object associated with the winning player, or null if there is no winner.
 	 */
 	public Player getWinner() {
@@ -285,9 +285,10 @@ public class TicTacToe {
 	}
 
 	/**
-	* This method sets new board
-	*@return the board
-	*/
+	 * Returns the board associated with current game
+	 * 
+	 *@return the board
+	 */
 	public Board getBoard() {
 		return board;
 	}
