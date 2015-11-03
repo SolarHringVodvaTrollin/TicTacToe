@@ -3,3 +3,4 @@
 cp README.md src/markdown
 
 ./gradlew markdownToHtml
+./gradlew javadoc
