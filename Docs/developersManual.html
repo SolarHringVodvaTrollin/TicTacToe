@@ -1,0 +1,27 @@
+<h1>Development manual</h1><p>For development of this game you need to follow through the steps below and make sure you have all required tools.</p><p>Go to bottom page for list of all tools and requirements that were used for developing this project. </p><p>---------- 1. The code is written in Java (v.1.8) so in order to run the application you need to have java jdk installed. If haven't got it already you follow the links below:</p>
+<ul>
+  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Download Java JDK 8</a></li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html#CJAGAACB">Instructions for installing Java JDK</a></li>
+</ul>
+<ol>
+  <li><p>We decided to use the text editor Sublime Text but any other editor that supports Java will do. If you don't have an editor, you can download <a href="http://www.sublimetext.com/">Sublime Text here.</a></p></li>
+  <li><p>TicTacToe is hosted on <a href="http://www.github.com">GitHub</a> so we encourage developers to continue using it, as it is associated with the Continuos Integration System <a href="https://travis-ci.org/">Travis</a>.</p>
+  <ul>
+    <li><a href="http://https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Instructions to install Git</a></li>
+    <li><a href="https://help.github.com/articles/set-up-git/">Getting started with GitHub</a></li>
+    <li><a href="http://docs.travis-ci.com/user/getting-started/">Getting started with Travis</a></li>
+  </ul></li>
+  <li><p>Now you should have all tools required so far, and you can clone from GitHub using Git Bash: </p></li>
+</ol><p> $ git clone https://github.com/SolarHringVodvaTrollin/TicTacToe.git </p>
+<ol>
+  <li>Gradle is a build system that took care of the build process, fetching dependencies, creating Java Documentation and converting other documentation to HTML. Gradle wrapper is included so installation is not required.</li>
+</ol><h2>Useful commands</h2><p><strong>Building</strong></p><p><code>.\bin\build</code> for Unix </p><p><code>.\bin\build.bat</code> for Windows </p><p><strong>Deploying</strong></p><p><code>.\bin\install</code> for Unix </p><p><code>.\bin\install.bat</code> for Windows</p><p>These commands are sufficient to run the program as it is, but it might come useful to use Gradle later on. </p><p><strong>Building</strong></p><p><code>.\gradlew build</code> for Unix </p><p><code>.\gradlew.bat build</code> for Windows </p><p><strong>Deploying</strong></p><p><code>.\gradlew install</code> for Unix </p><p><code>.\gradlew.bat install</code> for Windows</p><p><strong>View all tasks runnable from root project</strong></p><p><code>.\gradlew tasks</code></p><h2>List of tools used for developing</h2>
+<ul>
+  <li>Trello</li>
+  <li>Java Development Kit 8*</li>
+  <li>GitHub*</li>
+  <li>Sublime Text</li>
+  <li>Gradle</li>
+  <li>Travis</li>
+  <li>MarkdownPad 2</li>
+</ul><p>**Required*</p>
