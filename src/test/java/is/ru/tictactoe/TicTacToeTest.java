@@ -8,7 +8,7 @@ public class TicTacToeTest {
 
     @Test
     public void testGetPlayer() {
-    	TicTacToe game = new TicTacToe(true);
+    	TicTacToe game = new TicTacToe();
 
     	Player player1 = game.getPlayer(true);
     	Player player2 = game.getPlayer(false);
@@ -22,7 +22,7 @@ public class TicTacToeTest {
 
     @Test
     public void testGetWinner() {
-        TicTacToe game = new TicTacToe(true);
+        TicTacToe game = new TicTacToe();
 
         assertNull(game.getWinner());
 
@@ -35,7 +35,7 @@ public class TicTacToeTest {
 
     @Test
     public void testChangePlayerName() {
-    	TicTacToe game = new TicTacToe(true);
+    	TicTacToe game = new TicTacToe();
 
     	Player player1 = game.getPlayer(true);
     	Player player2 = game.getPlayer(false);
@@ -45,15 +45,11 @@ public class TicTacToeTest {
 
     	assertEquals("Einstein", player1.getName());
     	assertEquals("Hawking", player2.getName());
-
-    	game.changePlayerName("", true);
-
-    	assertEquals("Einstein", player1.getName());
     }
 
     @Test
     public void testMakeMove() {
-    	TicTacToe game = new TicTacToe(true);
+    	TicTacToe game = new TicTacToe();
 
     	for(int i = 0; i < 9; i++) {
     		assertTrue(game.makeMove(i, true));
