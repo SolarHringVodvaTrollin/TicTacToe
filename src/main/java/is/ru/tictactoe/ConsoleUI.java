@@ -1,10 +1,19 @@
 package is.ru.tictactoe;
 import java.util.Scanner;
 
+/**
+* This class takes care of the gameplay, prints out the board, gets input from the users
+* @author SolarHringVodvaTrollin
+* @since 2.11.2015
+*/
 public class ConsoleUI {
 	public ConsoleUI() {
 		
 	}
+
+/**
+* This method draws (prints out to the screen) the numbered grid for the Tic Tac Toe game
+*/
 
 	public void draw() {
 		System.out.println(" 0 | 1 | 2 ");
@@ -13,6 +22,9 @@ public class ConsoleUI {
 		System.out.println();
 	}
 
+/**
+* This method draws (prints out to the screen) the grid and also assigns 'x' when true and 'o' when false to distinguish between two players
+*/
 	public static void draw(Board board) {
 		Move[] move = board.getMoves();
 
@@ -49,6 +61,11 @@ public class ConsoleUI {
 		System.out.println();
 	}
 
+	/**
+	* This method fetches moves from players. The move is an integer.
+	* @return if there is a possible move the return statement will return the integer with the index to the squere that was chosen by player, otherwise it returns 0.
+	*/
+
 	public int getMove() {
 		System.out.println("Enter square: ");
 		Scanner in = new Scanner(System.in);
@@ -59,6 +76,12 @@ public class ConsoleUI {
 		return 0;
 	}
 	
+	/**
+	* This method gets the name of the first player
+	* @param firstPlayerName the name of the first player
+	* @return returns the string with the name of the first player
+	*/
+
 	public String getInputFirstPlayer(){
 		Scanner in = new Scanner(System.in);
 		String firstPlayerName;
@@ -74,6 +97,12 @@ public class ConsoleUI {
 		return firstPlayerName;		
 	}
 
+	/**
+	* This method gets the name of the second player
+	* @param secondPlayerName the name of the second player
+	* @return returns the string with the name of the second player
+	*/
+
 	public String getInputSecondPlayer(){
 		Scanner in = new Scanner(System.in);
 		String secondPlayerName;
@@ -88,6 +117,11 @@ public class ConsoleUI {
 		}
 		return secondPlayerName;
 	}
+
+	/**
+	* This method gets the input from the player, validates it (checks if it is in range 0-8)
+	* @param validInput is a boolean variable that is set to false as default, if the input from user meets the requirements it will be changed to true
+	*/
 
 	public int getInputNumber(){
 		Boolean validInput = false;
@@ -114,7 +148,11 @@ public class ConsoleUI {
 			}
 		}
 		return 0;
-	}	
+	}
+
+	/**
+	* This method returns boolean value (true/false) that depends on the input from the user whether he/she wants to continue the game, if so the game will be set to reset.
+	*/	
 
 	public boolean promptContinue() {
 		Scanner in = new Scanner(System.in);
@@ -136,9 +174,17 @@ public class ConsoleUI {
 		}
 	}
 
+	/**
+	* This method prints out to the screen message to the player when the move is illegal.
+	*/
+
 	public void promptIllegalMove() {
 		System.out.println("Illegal move. Is the square already occupied or are you trying to make an out-of-bounds move?");
 	}
+
+	/**
+	* This method prints out to the screen the name of the winner or the massage that there is a tie
+	*/
 
 	public void display(Player winner) {
 		if(winner == null) {
@@ -149,11 +195,19 @@ public class ConsoleUI {
 		}
 	}
 
+	/**
+	* This method prints out to the screen the current score
+	*/
+
 	public void displayScore(Player p1, Player p2) {
 		System.out.println("Current score:");
 		System.out.println(p1.getName() + ":\t" + p1.getScore());
 		System.out.println(p2.getName() + ":\t" + p2.getScore());
 	}
+
+	/**
+	* This method prints out to the screen menu for the player to choose from 
+	*/
 
 	public String displayOptions() {
 		System.out.println("[N]ew round\n[S]core\n[Q]uit");
