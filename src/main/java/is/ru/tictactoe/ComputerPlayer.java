@@ -2,12 +2,21 @@ package is.ru.tictactoe;
 
 import java.util.Random;
 
+	/**
+	 *Intatiatez the class computerPlayer as a child of Player
+	 */
  class ComputerPlayer extends Player{
 
 	public ComputerPlayer(String name, Boolean symbol) {
 		 super(name, symbol);
 	}
 	
+	/**
+	 *Generate a move for the computer
+	 *@param takes in the board and where there are moves
+	 *
+	 *@return the index value of where the move should be inserted
+	 */
 	public int generateMove(Board board) {
 		Random rmove = new Random();
 		int randomMove = rmove.nextInt(9);
