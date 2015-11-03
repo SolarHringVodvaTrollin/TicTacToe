@@ -1,5 +1,7 @@
 package is.ru.tictactoe;
 
+import java.util.Random;
+
 public class TicTacToe {
 
 	private final boolean COMPUTER = false;
@@ -44,15 +46,16 @@ public class TicTacToe {
 					}
 				}
 				else {
-					ComputerPlayer comp = (ComputerPlayer)player2;
-					int move = comp.generateMove(getBoard());
-					if(makeMove(move, false)) {
-						System.out.println("Computer made a move");
+					if(currentPlayer == PLAYER1) {
+						while(!makeMove(ui.getMove(), currentPlayer)) {
+							ui.promptIllegalMove();
+						}
 					}
 					else {
-						System.out.println("Computer tried to make an illegal move");
+						makeRandomMove(currentPlayer);
 					}
 				}
+
 				currentPlayer = !currentPlayer;
 			}
 
@@ -82,11 +85,12 @@ public class TicTacToe {
 			userInput = ui.displayPrompt();
 			String[] tokens = userInput.split(" ");
 
+			if(tokens.length == 0) continue;
+
 			if(userInput.toLowerCase().startsWith("play")) {
 				if(tokens.length > 1) {
 					if(tokens[1].toLowerCase().equals("computer")) {
-						System.out.println("Sorry, not implemented yet!");
-						//play(COMPUTER);
+						play(COMPUTER);
 					}
 					else if(tokens[1].toLowerCase().equals("human")) {
 						play(HUMAN);
@@ -191,6 +195,37 @@ public class TicTacToe {
 		else					return false;
 	}
 
+	/**
+	 * Generates a random move for the specified player
+	 *
+	 * @param player The player to generate the move for
+	 * 
+	 * @return true if the move was successfully made, false otherwise.
+	  */
+	public boolean makeRandomMove(boolean player) {
+		Random rmove = new Random();
+		int randomMove = rmove.nextInt(9);
+		
+		if(isFull()) {
+			return false;
+		}
+
+		if(board.getMoveAt(randomMove) == null) {
+			return board.addMove(randomMove, player);
+		}
+		else {
+			for(int i = randomMove + 1; i <= 9; i++){
+				if(i == 9) {
+					i = 0;
+				}
+
+				if(board.getMoveAt(i) == null){
+					return board.addMove(i, player);
+				}
+			}
+		}
+		return false;
+	}
 	/**
 	 * Checks whether the game board has been filled.
 	 * 

@@ -38,6 +38,7 @@ public class ConsoleUI {
 * This method draws (prints out to the screen) the grid and also assigns 'x' when true and 'o' when false to distinguish between two players
 */
 	public static void draw(Board board) {
+		System.out.println();
 		Move[] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
