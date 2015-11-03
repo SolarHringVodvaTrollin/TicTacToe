@@ -1,3 +1,4 @@
 #!/bin/bash
 
-./gradlew run
+/bin/package
+/build/install/TicTacToe/bin/TicTacToe

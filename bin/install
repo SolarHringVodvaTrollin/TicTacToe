@@ -4,8 +4,10 @@ APP="TicTacToe"
 
 bin/clean
 bin/package
+bin/makedocs
 
 test -f /tmp/${APP} && rm -r /tmp/${APP}
 cp -r build/install/${APP} /tmp
+cp -r build/Docs /tmp/${APP}/Docs/
 
 /tmp/${APP}/bin/${APP}
