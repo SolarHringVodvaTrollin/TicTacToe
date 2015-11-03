@@ -80,6 +80,7 @@ public class TicTacToe {
 			}
 
 			// If winner is null, UI will report a tie
+			ui.draw(board);
 			ui.display(winner);
 			ui.displayScore(player1, player2);
 			// Swap the player that takes the first turn each round.
