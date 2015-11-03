@@ -38,6 +38,7 @@ public class ConsoleUI {
 * This method draws (prints out to the screen) the grid and also assigns 'x' when true and 'o' when false to distinguish between two players
 */
 	public static void draw(Board board) {
+		System.out.println();
 		Move[] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
@@ -96,7 +97,7 @@ public class ConsoleUI {
 	public void displayTurn(Player player) {
 		System.out.print(player.getName() + "'s turn (" + (player.getSymbol() ? "X" : "O") + "). ");
 	}
-	
+
 	/**
 	* This method gets the name of the first player
 	* @param firstPlayerName the name of the first player
@@ -172,7 +173,6 @@ public class ConsoleUI {
 	/**
 	* This method returns boolean value (true/false) that depends on the input from the user whether he/she wants to continue the game, if so the game will be set to reset.
 	*/	
-
 	public boolean promptContinue() {
 		Scanner in = new Scanner(systemIn);
 		System.out.println("Would you like to play another round? [y/n] ");
