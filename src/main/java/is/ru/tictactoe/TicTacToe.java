@@ -26,10 +26,6 @@ public class TicTacToe {
 		ui = new ConsoleUI();
 	}
 
-	private void showMenu() {
-
-	}
-
 	private void play(boolean opponent) {
 		boolean firstPlayer = PLAYER1;
 
