@@ -82,6 +82,8 @@ public class TicTacToe {
 			userInput = ui.displayPrompt();
 			String[] tokens = userInput.split(" ");
 
+			if(tokens.length == 0) continue;
+
 			if(userInput.toLowerCase().startsWith("play")) {
 				if(tokens.length > 1) {
 					if(tokens[1].toLowerCase().equals("computer")) {
