@@ -1,70 +1,79 @@
 package is.ru.tictactoe;
 import java.util.Scanner;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class ConsoleUI {
+
+	private InputStream systemIn;
+	private OutputStream systemOut;
+
 	public ConsoleUI() {
-		
+		systemIn = System.in;
+		systemOut = System.out;
+	}
+
+	public ConsoleUI(InputStream in, OutputStream out) {
+		systemIn = in;
+		systemOut = out;
 	}
 
 	public void draw() {
-		System.out.println("   |   |   ");
-		System.out.println("   |   |   ");
-		System.out.println("   |   |   ");
+		System.out.println(" 0 | 1 | 2 ");
+		System.out.println(" 3 | 4 | 5 ");
+		System.out.println(" 6 | 7 | 8 ");
+		System.out.println();
 	}
 
 	public static void draw(Board board) {
-	/*	Move[][] move = board.getMoves();
+		Move[] move = board.getMoves();
 
 		for(int i = 0; i < move.length; i++){
-			for(int j = 0; j < move.length; j++){
+			if(i == 3 || i == 6){
 
-				if(j == 1){ //Tegar j er 1 ta baetum vid vid linu til ad afmarka interfacid
-					if(move[i][j] != null){
-						Player player = move[i][j].getPlayer();
-						//Tegar buid er ad adda true false fidusnum
-						if(player.getSymbol()){
-							System.out.print("| X |");
-						}
-						else{
-							System.out.print("| O |");	
-						}
-					}
-					else{
-						System.out.print("|   |");
-					}
+				System.out.println();
+			}
+			if(i == 1 || i == 4 || i == 7){
+
+				if(move[i] == null){
+					System.out.print("|   |" );
 				}
-				else{ //Engar linur til ad afmarka interfacid
-					if(move[i][j] != null){
-						Player player = move[i][j].getPlayer();
-						//Tegar buid er ad adda True False fidusnum
-						if(player.getSymbol()) {
-							System.out.print(" X ");
-						}
-						else {
-							System.out.print(" O ");
-						}
-					}
-					else{
-						System.out.print("   ");
-					}
+				else if(move[i].getSymbol() == true){
+					System.out.print("| X |" );
+				}
+				else if(move[i].getSymbol() == false){
+					System.out.print("| O |" );
+				}
+			}	
+			else
+			{
+				if(move[i] == null){
+					System.out.print("   " );
+				}
+				else if(move[i].getSymbol() == true){
+					System.out.print(" X " );
+				}
+				else if(move[i].getSymbol() == false){
+					System.out.print(" O " );
 				}
 			}
-			System.out.println();
-		}*/
+		}
+		System.out.println();
 	}
 
 	public int getMove() {
 		System.out.println("Enter square: ");
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(systemIn);
 
 		if(in.hasNextInt()) {
 			return in.nextInt();
 		}
-		return 0;
+		return -1;
 	}
 	
+	// TODO: Sameina í eitt fall, getName(boolean player)
 	public String getInputFirstPlayer(){
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(systemIn);
 		String firstPlayerName;
 		System.out.println("Enter name for Player 1:");
 
@@ -79,7 +88,7 @@ public class ConsoleUI {
 	}
 
 	public String getInputSecondPlayer(){
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(systemIn);
 		String secondPlayerName;
 		System.out.println("Enter name for Player 2:");
 
@@ -93,12 +102,13 @@ public class ConsoleUI {
 		return secondPlayerName;
 	}
 
+	// TODO: Eyða, fallið getMove() kemur í staðinn
 	public int getInputNumber(){
 		Boolean validInput = false;
 		System.out.print( " please choose a box (0-8): ");
 
 		while(!validInput){
-			Scanner in = new Scanner(System.in);
+			Scanner in = new Scanner(systemIn);
 			
 			if(in.hasNextInt()){
 				int input = in.nextInt();
@@ -121,23 +131,16 @@ public class ConsoleUI {
 	}	
 
 	public boolean promptContinue() {
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(systemIn);
 		System.out.println("Would you like to play another round? [y/n] ");
 
-		while(true) {
-			if(in.hasNext()) {
-				String input = in.next();
+		if(in.hasNext()) {
+			String input = in.next();
 
-				if(input == "y" || input == "Y")
-					return true;
-				else if(input == "n" || input == "N")
-					return false;
-				else {
-					System.out.println("Illegal input: '" + input + "'. Please enter either 'y' or 'n'");
-				}
-			}
-			in.reset();
+			if(input.equals("y") || input.equals("Y"))
+				return true;
 		}
+		return false;
 	}
 
 	public void promptIllegalMove() {
@@ -162,7 +165,7 @@ public class ConsoleUI {
 	public String displayOptions() {
 		System.out.println("[N]ew round\n[S]core\n[Q]uit");
 
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(systemIn);
 
 		boolean isValid;
 
