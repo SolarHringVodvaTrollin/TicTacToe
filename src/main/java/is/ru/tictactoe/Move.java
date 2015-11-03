@@ -19,14 +19,14 @@ public class Move {
 		this.square = square;
 	}
 	/**
-	 *Returns square for the given move
+	 *@return Returns square for the given move
 	 */
 	public int getSquare() {
 		return square;
 	}
 
 	/**
-	 *Returns true or false
+	 *@return Returns true or false
 	 */
 	public boolean getSymbol() {
 		return symbol;

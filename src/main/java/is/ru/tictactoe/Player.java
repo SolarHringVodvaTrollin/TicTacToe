@@ -22,7 +22,7 @@ public class Player {
 	}
 
 	/**
-	 *Returns the name of the player that owns this instance
+	 *@return Returns the name of the player that owns this instance
 	 */
 	public String getName(){
 		return name;
@@ -43,14 +43,14 @@ public class Player {
 	}
 
 	/**
-	 *Returns the symbol of the player that owns this instance
+	 *@return Returns the symbol of the player that owns this instance
 	 */
 	public Boolean getSymbol(){
 		return symbol;
 	}
 
 	/**
-	 *Returns the score of the player that owns this instance
+	 *@return Returns the score of the player that owns this instance
 	 */
 	public int getScore() {
 		return score;
