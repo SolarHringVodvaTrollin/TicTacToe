@@ -3,7 +3,6 @@
 # TicTacToe #
 Late-term assignment for Hugbúnaðarfræði, Reykjavík University.
 
-
 ----------
 Authors: 
 

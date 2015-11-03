@@ -1,4 +1,5 @@
 #!/bin/bash
 
-./gradlew markdownToHtml
+cp README.md src/markdown
 
+./gradlew markdownToHtml
