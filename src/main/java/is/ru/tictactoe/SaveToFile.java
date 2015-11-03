@@ -1,8 +1,10 @@
 package is.ru.tictactoe;
 
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class SaveToFile {
@@ -10,7 +12,7 @@ public class SaveToFile {
 	private File gamesInfo;
 	private BufferedWriter outputPlayerInfo;
 	private BufferedWriter outputGamesInfo;
-	//private BufferedReader inputPlayerInfo;
+	private BufferedReader inputPlayerInfo;
 	//private BufferedReader inputGamesInfo;
 
 	/**
@@ -32,11 +34,11 @@ public class SaveToFile {
 			FileWriter fwGame = new FileWriter(gamesInfo.getAbsoluteFile(), true);
 			FileWriter fwPlayer = new FileWriter(playerInfo.getAbsoluteFile(), true);
 			//FileReader frGame = new FileReader(gamesInfo.getAbsoluteFile());
-			//FileReader frPlayer = new FileReader(playerInfo.getAbsoluteFile());
+			FileReader frPlayer = new FileReader(playerInfo.getAbsoluteFile());
 			outputGamesInfo = new BufferedWriter(fwGame);
 			outputPlayerInfo = new BufferedWriter(fwPlayer);
 			//inputGamesInfo = new BufferedReader(frGame);
-			//inputPlayerInfo = new BufferedReader(frPlayer);
+			inputPlayerInfo = new BufferedReader(frPlayer);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -45,11 +47,21 @@ public class SaveToFile {
 
 	/**
 	 *Adds a new player to the playerInfo file.
+	 *@param name of the player to be saved
+	 *@param score of the player
 	 *
-	 *@param name of the player and his score
 	 */
 	public void savePlayerToFile(String name, int score) {
 		try {
+			String line = null;
+
+			while((line = inputPlayerInfo.readLine()) != null) {
+
+				if(line.contains(name))
+				{
+					return;
+				}
+			}
 			String saveToFileString = name + "," + score;
 			outputPlayerInfo.write(saveToFileString);
 			outputPlayerInfo.newLine();
@@ -77,12 +89,7 @@ public class SaveToFile {
 		}
 	}
 
-	/**
-	 *Increments the score of the input player by 1/
-	 *
-	 *@param name of the player you want to increment the score of.
-	 */
-	/*public void updatePlayerScore(String name) {
+	public void updatePlayerScore(String name) {
 		File tempFile = new File("file.txt");
 		tempFile.createNewFile();
 		FileWriter fwTemp = new FileWriter(tempFile.getAbsoluteFile());

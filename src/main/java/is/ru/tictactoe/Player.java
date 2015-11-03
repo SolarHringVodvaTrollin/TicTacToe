@@ -38,7 +38,7 @@ public class Player {
 	public void setName(String name) throws IllegalArgumentException {
 		//if(name == "")
 		//	throw new IllegalArgumentException("Name cannot be empty");
-
+		
 		this.name = name;
 	}
 
