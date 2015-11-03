@@ -71,6 +71,12 @@ public class TicTacToe {
 
 			if(winner != null) {
 				winner.raiseScore();
+				if(winner.getSymbol() == true) {
+					save.saveGameToFile(player1.getName());
+				}
+				else {
+					save.saveGameToFile(player2.getName());
+				}
 			}
 
 			// If winner is null, UI will report a tie
@@ -122,6 +128,7 @@ public class TicTacToe {
 					if(tokens[1].toLowerCase().equals("player1")) {
 						String oldname = getPlayer(true).getName();
 						changePlayerName(tokens[2], true);
+						save.savePlayerToFile(tokens[2], 0);
 						ui.confirmNameChange(tokens[2], oldname);
 					}
 					else if(tokens[1].toLowerCase().equals("player2")) {
@@ -160,10 +167,12 @@ public class TicTacToe {
 			}
 		}
 		while(!userInput.toLowerCase().equals("quit"));
+		save.close();
 	}
 
 	/**
 	 * Returns the player object which is the winner of the game according to the current board state, or null if there is no winner.
+	 *
 	 * @return the player object associated with the winning player, or null if there is no winner.
 	 */
 	public Player getWinner() {
@@ -276,9 +285,10 @@ public class TicTacToe {
 	}
 
 	/**
-	* This method sets new board
-	* @return new, clean and fresh grid for the game
-	*/
+	 * Returns the board associated with current game
+	 * 
+	 *@return the board
+	 */
 	public Board getBoard() {
 		return board;
 	}
