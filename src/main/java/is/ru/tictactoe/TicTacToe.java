@@ -28,6 +28,14 @@ public class TicTacToe {
 		ui = new ConsoleUI();
 	}
 
+	/**
+	* This method implements the gameplay. Player1 takes turn and then Player2
+	* @param firstPlayer is the player that starts the game. At the beginning of the game this variable is set to PLAYER1
+	* @param currentPlayer is the player that has her/his turn to move. At the beginning of the game this variable is set to player1
+	* @param comp is a computerAI player
+	* @param winner is the player that has won the game
+	*/
+
 	private void play(boolean opponent) {
 		boolean firstPlayer = PLAYER1;
 
@@ -156,7 +164,7 @@ public class TicTacToe {
 
 	/**
 	 * Returns the player object which is the winner of the game according to the current board state, or null if there is no winner.
-	 *
+	 * @param winner is the player that has won the game
 	 * @return the player object associated with the winning player, or null if there is no winner.
 	 */
 	public Player getWinner() {
@@ -261,22 +269,17 @@ public class TicTacToe {
 		else		player2.setName(name);
 	}
 
+	/**
+	* This method resets all moves
+	*/
 	public void resetBoard() {
 		board.reset();
 	}
 
+	/**
+	* This method sets new board
+	*/
 	public Board getBoard() {
 		return board;
-	}
-
-	/**
-	 *  Consider: Put main game code into run() function.
-	 *  Then the main function can consist solely of the following:
-	 *
-	 *  TicTacToe game = new TicTacToe(new UiToUse);
-	 *	game.run();
-	 */
-	public static void main(String[] args) {
-
 	}
 }
