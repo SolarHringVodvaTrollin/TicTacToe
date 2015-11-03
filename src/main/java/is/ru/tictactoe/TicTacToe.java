@@ -1,5 +1,18 @@
 package is.ru.tictactoe;
 
+/**
+* The Tic Tac Toe program implements well known board game where two opponents are playing against each other
+* One player has 'x' symbol and the other 'o' symbol. They take turns and the one who manages to create line of three same symbols wins
+* @param COMPUTER is a boolean variable that holds information whether the player is a computer; set as default to false
+* @param HUMAN is a boolean variable that holds information whether the player is a human; set as default to true
+* @param PLAYER1 is a boolean variable that assignes the Player1; set as default to true
+* @param PLAYER2 is a boolean variable that assignes the Player2; set as default to false
+* @param ui creates a new instance of consoleUI
+* @param save saves to file scores of the game
+* @param board creates a new instance of the board
+* @param player1 creates a new instance of player
+* @param player2 creates a new instance of player
+*/
 public class TicTacToe {
 
 	private final boolean COMPUTER = false;
@@ -25,6 +38,14 @@ public class TicTacToe {
 		save = new SaveToFile();
 		ui = new ConsoleUI();
 	}
+
+	/**
+	* This method implements the gameplay. Player1 takes turn and then Player2
+	* @param firstPlayer is the player that starts the game. At the beginning of the game this variable is set to PLAYER1
+	* @param currentPlayer is the player that has her/his turn to move. At the beginning of the game this variable is set to player1
+	* @param comp is a computerAI player
+	* @param winner is the player that has won the game
+	*/
 
 	private void play(boolean opponent) {
 		boolean firstPlayer = PLAYER1;
@@ -152,7 +173,7 @@ public class TicTacToe {
 
 	/**
 	 * Returns the player object which is the winner of the game according to the current board state, or null if there is no winner.
-	 *
+	 * @param winner is the player that has won the game
 	 * @return the player object associated with the winning player, or null if there is no winner.
 	 */
 	public Player getWinner() {
@@ -226,22 +247,17 @@ public class TicTacToe {
 		else		player2.setName(name);
 	}
 
+	/**
+	* This method resets all moves
+	*/
 	public void resetBoard() {
 		board.reset();
 	}
 
+	/**
+	* This method sets new board
+	*/
 	public Board getBoard() {
 		return board;
-	}
-
-	/**
-	 *  Consider: Put main game code into run() function.
-	 *  Then the main function can consist solely of the following:
-	 *
-	 *  TicTacToe game = new TicTacToe(new UiToUse);
-	 *	game.run();
-	 */
-	public static void main(String[] args) {
-
 	}
 }
