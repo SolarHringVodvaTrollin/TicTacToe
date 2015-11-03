@@ -75,7 +75,7 @@ public class ConsoleUI {
 
 	/**
 	* This method fetches moves from players. The move is an integer.
-	* @return if there is a possible move the return statement will return the integer with the index to the squere that was chosen by player, otherwise it returns 0.
+	* @return if there is a possible move the return statement will return the integer with the index to the squere that was chosen by player, otherwise it returns -1.
 	*/
 
 	public int getMove() {
@@ -87,6 +87,11 @@ public class ConsoleUI {
 		}
 		return -1;
 	}
+
+
+	/**
+	* This method prints out to the screen which player´s turn is up
+	*/
 
 	public void displayTurn(Player player) {
 		System.out.print(player.getName() + "'s turn (" + (player.getSymbol() ? "X" : "O") + "). ");
@@ -254,22 +259,43 @@ public class ConsoleUI {
 		System.out.println();
 	}
 
+	/**
+	* This method prints to the screen message when the game starts
+	*/
+
 	public void displayWelcome() {
 		System.out.println("Welcome to Tic Tac Toe!\n");
 		displayHelp();
 	}
 
+	/**
+	* This method prints to the screen message at the end of the game
+	*/
+
 	public void displayGoodbye() {
 		System.out.println("Bye!");
 	}
+
+	/**
+	* This method prints to the screen message where the players are informed that the game has been reset
+	*/
 
 	public void displayReset() {
 		System.out.println("The game has been reset.");
 	}
 
+	/**
+	* This method displays message that confirms name change
+	*/
+
 	public void confirmNameChange(String newname, String oldname) {
 			System.out.println("Name changed from '" + oldname + "' to '" + newname + "'.");
 	}
+
+	/**
+	* This method allows the player to choose hers/his opponent
+	* It requires an character input from the player, the letter 'H' for the human opponent or the letter 'C' for the computerAI
+	*/
 
 	public Boolean players() {
 		System.out.println("Do you want to compete to a human player or computer?[H]uman/[C]omputer");
@@ -290,17 +316,35 @@ public class ConsoleUI {
 		}
 	}
 
+	/**
+	* This method prints out to the screen message to the user that the string input that was entered is invalid.
+	* It also suggests to the user the possibility of typing command 'help' for help 
+	*/
 	public void invalidArgument(String arg) {
 		System.out.println("Invalid argument '" + arg + "'. Type 'help' for help.");
 	}
+
+	/**
+	* This method prints out to the screen message to the user that the argument is invalid.
+	* It also suggests to the user the possibility of typing command 'help' for help 
+	*/
 
 	public void invalidArgument() {
 		System.out.println("Invalid argument. Type 'help' for help.");
 	}
 
+	/**
+	* This method prints out to the screen message to the user that the command that was entered is invalid.
+	* It also suggests to the user the possibility of typing command 'help' for help 
+	*/
+
 	public void invalidCommand(String com) {
 		System.out.println("Invalid command '" + com + "'. Type 'help' for help.");
 	}
+
+	/**
+	* This method propmts from the player a confirmation (boolean answer: yes or no) before performing an action, gives him/her a warning if their action causes some changes to the game
+	*/
 
 	public boolean confirmAction(String action) {
 		System.out.println("Are you sure you want to " + action + "?");
