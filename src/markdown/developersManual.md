@@ -14,7 +14,9 @@ For development of this game you need to follow through the steps below and make
 
 2. The IDE chosen was Sublime Text, but any other editor that supports Java will do. If you don't have an editor, you can download [Sublime Text here.](http://www.sublimetext.com/) 
 
-The game is developed in Java language in Sublime Text (other editors that support Java are sufficent). 
+	The game is developed in Java language in Sublime Text (other editors that support Java are sufficent). 
+
+3. In order to 
 
 
 
