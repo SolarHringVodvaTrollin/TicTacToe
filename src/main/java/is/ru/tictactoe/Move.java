@@ -7,10 +7,10 @@ public class Move {
 	/**
 	 *Instantiates a new move.
 	 *
-	 *@param square Integer that is an index to the board
-	 *@param symbol Boolean value that is true or false to represent X or O.
+	 * @param square Integer that is an index to the board
+	 * @param symbol Boolean value that is true or false to represent X or O.
 	 *
-	 *@Throws IllegalArgumentException if square is lower than 0 and higher than 8.
+	 * @throws IllegalArgumentException if square is lower than 0 and higher than 8.
 	 */
 	public Move(int square, boolean symbol) throws IllegalArgumentException {
 		if((square < 0) || (square > 8))
