@@ -1,6 +1,6 @@
 @echo off
 set APP=TicTacToe
-set LOCATION=C:\temp
+set LOCATION=C:\Games
 
 call bin\clean.bat
 call bin\package.bat
