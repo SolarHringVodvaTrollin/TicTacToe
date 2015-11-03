@@ -5,7 +5,6 @@ import java.lang.NullPointerException;
 *
 * This class implements the board for the game Tic Tac Toe
 * It keeps track of all moves 
-* @param board is an array of a type Move
 * @author SolarHringVodvaTrollin
 * @since 2.11.2015
 */
@@ -40,7 +39,7 @@ public class Board {
 
 	/**
 	 * Gets the move currently on given (zero-indexed) board square
-	 *
+	 * @param square one of 9 possible fields on the grid
 	 * @return the Move at square or null if square is empty
 	 */
 	public Move getMoveAt(int square) {
@@ -53,7 +52,8 @@ public class Board {
 
 	/**
 	* Adds a new move at a given position, with symbol either 'x' or 'o'
-	* @param moveCount counter that keeps track of moves during the game
+	* @param pos The position the move will occupy on the board (indexed 0-8)
+	* @param symbol true for 'X' and false for 'O'
 	* @return returns true if the new move was accepted/performed 
 	*/
 
@@ -97,7 +97,7 @@ public class Board {
 	*Returns the winner's symbol which is true for 'X' and false for 'O'.
 	*If neither player is a winner then it will return NULL. 
 	*Checks all rows, columns and diagonal lines for the same symbol across.
-	*
+	* @return boolean representation of winning player or null if there is no winner
 	*/
 	public Boolean checkWinner() {
 		// TODO: Refine the checkWinner() method.
