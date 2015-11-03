@@ -203,7 +203,7 @@ public class ConsoleUI {
 			System.out.println("It's a tie!");
 		}
 		else {
-			System.out.println(winner.getName() + "has won!");
+			System.out.println(winner.getName() + " has won!");
 		}
 	}
 
