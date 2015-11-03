@@ -19,7 +19,7 @@ public class TicTacToeTest {
     	assertTrue(player1.getSymbol());
     	assertFalse(player2.getSymbol());
     }
-/*
+
     @Test
     public void testGetWinner() {
         TicTacToe game = new TicTacToe();
@@ -32,7 +32,7 @@ public class TicTacToeTest {
 
         assertSame(game.getPlayer(true), game.getWinner());
     }
-*/
+
     @Test
     public void testChangePlayerName() {
     	TicTacToe game = new TicTacToe();
@@ -45,10 +45,6 @@ public class TicTacToeTest {
 
     	assertEquals("Einstein", player1.getName());
     	assertEquals("Hawking", player2.getName());
-
-    	game.changePlayerName("", true);
-
-    	assertEquals("Einstein", player1.getName());
     }
 
     @Test

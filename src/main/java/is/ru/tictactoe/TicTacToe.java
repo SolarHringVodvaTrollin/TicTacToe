@@ -2,21 +2,152 @@ package is.ru.tictactoe;
 
 public class TicTacToe {
 
-	// TODO: Dependency injection for the UI? Constructor accepts a UI as a parameter?
-	// UI ui;
+	private final boolean COMPUTER = false;
+	private final boolean HUMAN = true;
+	private final boolean PLAYER1 = true;
+	private final boolean PLAYER2 = false;
+
+	private ConsoleUI ui;
+	private SaveToFile save;
 	private Board board;
 	private Player player1;
 	private Player player2;
 
 	/**
 	 * Creates a new instance of a TicTacToe game.
-	 * Players will be named "Player 1" and "Player 2" by default and the board will be empty.
+	 * Players will be named "Player 1" and "Player 2" by default, Player 2 will be human
+	 * and the board will be empty.
 	 */
 	public TicTacToe() {
-		this.player1 = new Player("Player 1", true);
-		this.player2 = new Player("Player 2", false);
-
+		player1 = new Player("Player 1", true);
+		player2 = new Player("Player 2", false);
 		board = new Board();
+		save = new SaveToFile();
+		ui = new ConsoleUI();
+	}
+
+	private void play(boolean opponent) {
+		boolean firstPlayer = PLAYER1;
+
+		do {
+			resetBoard();
+			boolean currentPlayer = firstPlayer;
+			ui.draw();
+
+			while(getWinner() == null && !isFull()) {
+				ui.draw(board);
+				ui.displayTurn(getPlayer(currentPlayer));
+
+				if(opponent == HUMAN) {
+					while(!makeMove(ui.getMove(), currentPlayer)) {
+						ui.promptIllegalMove();
+					}
+				}
+				else {
+					ComputerPlayer comp = (ComputerPlayer)player2;
+					int move = comp.generateMove(getBoard());
+					if(makeMove(move, false)) {
+						System.out.println("Computer made a move");
+					}
+					else {
+						System.out.println("Computer tried to make an illegal move");
+					}
+				}
+				currentPlayer = !currentPlayer;
+			}
+
+			Player winner = getWinner();
+
+			if(winner != null) {
+				winner.raiseScore();
+			}
+
+			// If winner is null, UI will report a tie
+			ui.display(winner);
+			ui.displayScore(player1, player2);
+			// Swap the player that takes the first turn each round.
+			firstPlayer = !firstPlayer;
+		} while(ui.promptContinue());
+	}
+
+	/**
+	 * Runs the Tic Tac Toe game with default settings
+	 */
+	public void run() {
+
+		ui.displayWelcome();
+
+		String userInput;
+		do {
+			userInput = ui.displayPrompt();
+			String[] tokens = userInput.split(" ");
+
+			if(userInput.toLowerCase().startsWith("play")) {
+				if(tokens.length > 1) {
+					if(tokens[1].toLowerCase().equals("computer")) {
+						System.out.println("Sorry, not implemented yet!");
+						//play(COMPUTER);
+					}
+					else if(tokens[1].toLowerCase().equals("human")) {
+						play(HUMAN);
+					}
+					else {
+						ui.invalidArgument(tokens[1]);
+					}
+				}
+				// Default for no arguments is to play a human
+				else {
+					play(HUMAN);
+				}
+			}
+
+			else if(userInput.toLowerCase().equals("score")) {
+					ui.displayScore(player1, player2);
+			}
+
+			else if(userInput.toLowerCase().startsWith("setname")) {
+				if(tokens.length > 2) {
+					if(tokens[1].toLowerCase().equals("player1")) {
+						String oldname = getPlayer(true).getName();
+						changePlayerName(tokens[2], true);
+						ui.confirmNameChange(tokens[2], oldname);
+					}
+					else if(tokens[1].toLowerCase().equals("player2")) {
+						String oldname = getPlayer(false).getName();
+						changePlayerName(tokens[2], false);
+						ui.confirmNameChange(tokens[2], oldname);
+					}
+					else {
+						ui.invalidArgument(tokens[1]);
+					}
+				}
+				else {
+					ui.invalidArgument();
+				}
+			}
+
+			else if(userInput.toLowerCase().equals("reset")) {
+				if(ui.confirmAction(userInput.toLowerCase())) {
+					player1.setName("Player 1");
+					player2.setName("Player 2");
+					player1.resetScore();
+					player2.resetScore();
+					board.reset();
+					ui.displayReset();
+				}
+			}
+
+			else if(userInput.toLowerCase().equals("quit")) {
+				ui.displayGoodbye();
+			}
+
+			else if(userInput.toLowerCase().equals("help"))
+				ui.displayHelp();
+			else {
+				ui.invalidCommand(tokens[0]);
+			}
+		}
+		while(!userInput.toLowerCase().equals("quit"));
 	}
 
 	/**
@@ -89,10 +220,18 @@ public class TicTacToe {
 	 * @param player The boolean representation of the player to change the name for (true is player 1)
 	 */
 	public void changePlayerName(String name, boolean player) {
-		if(name == "")	return;
+		//if(name == "")	return;
 
 		if(player)	player1.setName(name);
 		else		player2.setName(name);
+	}
+
+	public void resetBoard() {
+		board.reset();
+	}
+
+	public Board getBoard() {
+		return board;
 	}
 
 	/**
@@ -103,50 +242,6 @@ public class TicTacToe {
 	 *	game.run();
 	 */
 	public static void main(String[] args) {
-		final boolean PLAYER1 = true;
-		final boolean PLAYER2 = false;
 
-		ConsoleUI ui = new ConsoleUI();
-		TicTacToe game = new TicTacToe();
-		SaveToFile saveToFile = new SaveToFile();
-
-		boolean firstPlayer = PLAYER1;
-
-		do {
-			// TODO: Implement function to return some value representing player's choice.
-			//ui.displayOptions()
-
-			/*
-			Pseudocode:
-			if(playerWantsNameChange) {
-				game.changePlayerName(playerThatWantsNameChange);
-			}
-			*/
-
-			boolean currentPlayer = firstPlayer;
-
-			ui.draw();
-
-			while(game.getWinner() == null && !game.isFull()) {
-				ui.draw(game.board);
-
-				while(!game.makeMove(ui.getMove(), currentPlayer)) {
-					ui.promptIllegalMove();
-				}
-
-				currentPlayer = !currentPlayer;
-			}
-
-			Player winner = game.getWinner();
-
-			if(winner != null) {
-				winner.raiseScore();
-			}
-
-			// If winner is null, ui will display a tie
-			ui.display(winner);
-			// Swap the player that takes the first turn each round
-			firstPlayer = !firstPlayer;
-		} while(ui.promptContinue());
 	}
 }
