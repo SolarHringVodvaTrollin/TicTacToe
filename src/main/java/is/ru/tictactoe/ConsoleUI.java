@@ -75,66 +75,7 @@ public class ConsoleUI {
 	public void displayTurn(Player player) {
 		System.out.print(player.getName() + "'s turn (" + (player.getSymbol() ? "X" : "O") + "). ");
 	}
-	
-	// TODO: Sameina í eitt fall, getName(boolean player)
-	public String getInputFirstPlayer(){
-		Scanner in = new Scanner(systemIn);
-		String firstPlayerName;
-		System.out.println("Enter name for Player 1:");
-
-		if(in.hasNext()){
-
-			firstPlayerName = in.next();
-		}
-		else{
-			return "kjánaplik";
-		}
-		return firstPlayerName;		
-	}
-
-	public String getInputSecondPlayer(){
-		Scanner in = new Scanner(systemIn);
-		String secondPlayerName;
-		System.out.println("Enter name for Player 2:");
-
-		if(in.hasNext()){
-			secondPlayerName = in.next();
-		}
-		else{
-
-			return "kúkalabbi";
-		}
-		return secondPlayerName;
-	}
-
-	// TODO: Eyða, fallið getMove() kemur í staðinn
-	public int getInputNumber(){
-		Boolean validInput = false;
-		System.out.print( " please choose a box (0-8): ");
-
-		while(!validInput){
-			Scanner in = new Scanner(systemIn);
-			
-			if(in.hasNextInt()){
-				int input = in.nextInt();
-			
-				if(input <= 8 && input >=0){
-					validInput = true;
-					return input;
-				
-				}
-				else {
-					System.out.println("Please enter a number between 0-8!");
-				}
-			}
 		
-			else {
-				System.out.println("Please enter a number between 0-8!");
-			}
-		}
-		return 0;
-	}	
-
 	public boolean promptContinue() {
 		Scanner in = new Scanner(systemIn);
 		System.out.println("Would you like to play another round? [y/n] ");
